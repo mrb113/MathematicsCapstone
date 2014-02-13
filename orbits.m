@@ -7,7 +7,7 @@ function orbits()
     
     Rxy2 = generateRxy2(2)
     %for i = 1:Rxy2(
-   multiply2(0, [0 1; 1 0], 2)
+    multiply2(x^2, [0 1; 1 0], 2)
     %% TODO %%
 end
 
@@ -28,7 +28,6 @@ end
 % Helper function returns the resulting polynomial when applied 
 % to the 2x2 matrix. This is for R[x, y]_2 for R (mod n)
 function result = multiply2(poly, matrix, n)
-    %% TODO: Take mod into account %%
     if (poly == 0)
         result = 0;
     else
@@ -45,13 +44,19 @@ function result = multiply2(poly, matrix, n)
         % If y is being multiplied, then it's xc + yd
 
         % First coefficient: x^2
-        %% TODO
         result = result + c(1)*(x*matrix(1, 1) + y*matrix(1, 2))^2;
 
         % Second coefficient: xy
         result = result + c(2)*(((x*matrix(1, 1) + y*matrix(1, 2))) * ((x*matrix(2, 1) + y*matrix(2, 2))));
-
+        
         % Third coefficient: y^2
         result = result + c(3)*(x*matrix(2, 1) + y*matrix(2, 2))^2;
+        
+        % MATLAB doesn't like supporting multivariate polynomials
+        % but this persuades it to give me the coefficients I need
+        resultCoeffs = coeffs(result + x^2 + x*y + x^2);
+        resultCoeffs = mod(resultCoeffs -1 , n); 
+        
+        result = x^2*resultCoeffs(1) + x*y*resultCoeffs(2) + y^2* resultCoeffs(3);
     end
 end
