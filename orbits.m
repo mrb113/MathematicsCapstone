@@ -54,9 +54,38 @@ function result = multiply2(poly, matrix, n)
         
         % MATLAB doesn't like supporting multivariate polynomials
         % but this persuades it to give me the coefficients I need
-        resultCoeffs = coeffs(result + x^2 + x*y + x^2);
+        resultCoeffs = coeffs(result + x^2 + x*y + y^2);
         resultCoeffs = mod(resultCoeffs -1 , n); 
-        
         result = x^2*resultCoeffs(1) + x*y*resultCoeffs(2) + y^2* resultCoeffs(3);
+    end
+end
+
+% Helper function returns the resulting polynomial when applied 
+% to the 2x2 matrix. This is for R[x, y]_1 for R (mod n)
+function result = multiply1(poly, matrix, n)
+    if (poly == 0)
+        result = '0';
+    else
+        syms x y;
+        result = 0; 
+        c = [0 0]; 
+        temp = fliplr(coeffs(poly + y + x) - 1);
+        for i = 1:length(temp)
+           c(i) = temp(i); 
+        end
+        % If x is being multiplied, then it's xa + yb
+        % If y is being multiplied, then it's xc + yd
+
+        % First coefficient: x
+        result = result + c(1)*(x*matrix(1, 1) + y*matrix(1, 2));
+
+        % Second coefficient: y
+        result = result + c(2)*(x*matrix(2, 1) + y*matrix(2, 2));
+        
+        % MATLAB doesn't like supporting multivariate polynomials
+        % but this persuades it to give me the coefficients I need
+        resultCoeffs = coeffs(result + x + y);
+        resultCoeffs = mod(resultCoeffs -1 , n); 
+        result = x*resultCoeffs(2) + y*resultCoeffs(1);
     end
 end
