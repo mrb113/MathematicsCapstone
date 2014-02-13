@@ -18,34 +18,33 @@ syms x y;
         mapOrbits(currentMat, Rxy1, 1, 2); 
         fprintf('\n');
     end
-%     
-%     disp('Mapping orbits using SL2(mod 3) and R[x,y]_1:');
-%     for i = 1:length(SL2mod3)
-%         currentMat = SL2mod3(:, :, i);
-%         disp('Using matrix:');
-%         disp(currentMat);
-%         mapOrbits(currentMat, Rxy1, 1, 3); 
-%         fprintf('\n');
-%     end
-%         
-%     disp('Mapping orbits using SL2(mod 2) and R[x,y]_2:');
-%     for i = 1:length(SL2mod2)
-%         currentMat = SL2mod2(:, :, i);
-%         disp('Using matrix:');
-%         disp(currentMat);
-%         mapOrbits(currentMat, Rxy2, 2, 2); 
-%         fprintf('\n');
-%     end
-% 
-%         
-%     disp('Mapping orbits using SL2(mod 3) and R[x,y]_2:');
-%     for i = 1:length(SL2mod3)
-%         currentMat = SL2mod3(:, :, i);
-%         disp('Using matrix:');
-%         disp(currentMat);
-%         mapOrbits(currentMat, Rxy2, 2, 3); 
-%         fprintf('\n');
-%     end
+    
+    disp('Mapping orbits using SL2(mod 3) and R[x,y]_1:');
+    for i = 1:length(SL2mod3)
+        currentMat = SL2mod3(:, :, i);
+        disp('Using matrix:');
+        disp(currentMat);
+        mapOrbits(currentMat, Rxy1, 1, 3); 
+        fprintf('\n');
+    end
+        
+    disp('Mapping orbits using SL2(mod 2) and R[x,y]_2:');
+    for i = 1:length(SL2mod2)
+        currentMat = SL2mod2(:, :, i);
+        disp('Using matrix:');
+        disp(currentMat);
+        mapOrbits(currentMat, Rxy2, 2, 2); 
+        fprintf('\n');
+    end 
+        
+    disp('Mapping orbits using SL2(mod 3) and R[x,y]_2:');
+    for i = 1:length(SL2mod3)
+        currentMat = SL2mod3(:, :, i);
+        disp('Using matrix:');
+        disp(currentMat);
+        mapOrbits(currentMat, Rxy2, 2, 3); 
+        fprintf('\n');
+    end
 end
 
 % Generates the set of matrices that satisfy SL2 (mod n), given n. 
@@ -83,11 +82,7 @@ function result = multiply2(poly, matrix, n)
     else
         syms x y;
         result = 0; 
-        c = zeros(3); 
-        temp = coeffs(poly); 
-        for i = 1:length(temp)
-           c(i) = temp(i); 
-        end
+        c = fliplr(coeffs(poly + y^2 + x^2 +x*y) - 1);
         % Say I have x^2 + xy + y^2
         % This is represented by [1 1 1]
         % If x is being multiplied, then it's xa + yb
@@ -117,12 +112,9 @@ function result = multiply1(poly, matrix, n)
         result = '0';
     else
         syms x y;
-        result = 0; 
-        c = [0 0]; 
-        temp = fliplr(coeffs(poly + y + x) - 1);
-        for i = 1:length(temp)
-           c(i) = temp(i); 
-        end
+        result = 0;  
+        c = fliplr(coeffs(poly + y + x) - 1);
+
         % If x is being multiplied, then it's xa + yb
         % If y is being multiplied, then it's xc + yd
 
