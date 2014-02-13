@@ -1,0 +1,46 @@
+% Michelle Bergeron - Mathematics Capstone %
+% Spring 2014 %
+
+% TODO description
+function orbits()
+    syms x y;
+    n = 2;
+    Rxy2 = generateRxy2(n)
+    %for i = 1:Rxy2(
+   multiply2(x^2, [0 1; 1 0], 2)
+    %% TODO %%
+end
+
+% Generates the set of matrices that satisfy SL2 (mod n), given n. 
+% R[x,y]_p is defined as polynomials with powers up to p 
+% with coeffiecients mod n
+%
+% Parameters: SL2modN - Set of matrices in SL2(mod n)
+%             RxyP - Set of polynomials in R[x,y]_p
+% 
+% Return: That's a great question, I don't know yet if it'll return
+% something. We shall see.
+function mapOrbits(SL2modN, RxyP)
+
+    %% TODO %%
+end
+
+% Helper function returns the resulting polynomial when applied 
+% to the 2x2 matrix. This is for R[x, y]_2 for R (mod n)
+function result = multiply2(poly, matrix, n)
+    syms x y;
+    result = 0; 
+    % Say I have x^2 + xy + y^2
+    % This is represented by [1 1 1]
+    % If x is being multiplied, then it's xa + yb
+    % If y is being multiplied, then it's xc + yd
+    
+    % First coefficient: x^2
+    %% TODO
+    result = result + mod((x*matrix(1, 1) + y*matrix(1, 2))^2, n);
+    
+    % Second coefficient: xy
+    
+    
+    % Third coefficient: y^2
+end

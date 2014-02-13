@@ -3,7 +3,11 @@
 
 % TODO description
 function orbits()
-   
+    syms x y;
+    
+    Rxy2 = generateRxy2(2)
+    %for i = 1:Rxy2(
+   multiply2(0, [0 1; 1 0], 2)
     %% TODO %%
 end
 
@@ -21,8 +25,33 @@ function mapOrbits(SL2modN, RxyP)
     %% TODO %%
 end
 
-% Helper function returns the resulting polynomial when applied to the matrix
-function result = multiply(matrix, poly)
+% Helper function returns the resulting polynomial when applied 
+% to the 2x2 matrix. This is for R[x, y]_2 for R (mod n)
+function result = multiply2(poly, matrix, n)
+    %% TODO: Take mod into account %%
+    if (poly == 0)
+        result = 0;
+    else
+        syms x y;
+        result = 0; 
+        c = zeros(3); 
+        temp = coeffs(poly); 
+        for i = 1:length(temp)
+           c(i) = temp(i); 
+        end
+        % Say I have x^2 + xy + y^2
+        % This is represented by [1 1 1]
+        % If x is being multiplied, then it's xa + yb
+        % If y is being multiplied, then it's xc + yd
 
-    %% TODO %%
+        % First coefficient: x^2
+        %% TODO
+        result = result + c(1)*(x*matrix(1, 1) + y*matrix(1, 2))^2;
+
+        % Second coefficient: xy
+        result = result + c(2)*(((x*matrix(1, 1) + y*matrix(1, 2))) * ((x*matrix(2, 1) + y*matrix(2, 2))));
+
+        % Third coefficient: y^2
+        result = result + c(3)*(x*matrix(2, 1) + y*matrix(2, 2))^2;
+    end
 end

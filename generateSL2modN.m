@@ -1,13 +1,5 @@
 % Michelle Bergeron - Mathematics Capstone, Spring 2014 
 %
-% This script generates the sets of matrices and polynomials
-% needed for evaluation. %
-
-function setGeneration()
-    % Right now, we're concerned with SL2mod2
-    SL2mod2 = generateSL2modN(2);
-end
-
 % Generates the set of matrices that satisfy SL2 (mod n), given n. 
 % SL2 (mod n) is defined as matrices with entries mod n with 
 % non-zero determinants.
@@ -35,16 +27,3 @@ function SL2modN = generateSL2modN(n)
         end
     end
 end % wheeee
-
-% Generates the set of matrices that satisfy SL2 (mod n), given n. 
-% R[x,y]_p is defined as polynomials with powers up to p 
-% with coeffiecients mod n
-%
-% Parameters: n - Desired coefficient modulus
-%             p - Maximum power of polynomials
-% 
-% Return: The polynomials in R[x,y]_n
-function RxyP = generateRxyP(n, p)
-    %% TODO %%
-    
-end
