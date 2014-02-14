@@ -4,12 +4,13 @@
 % Runs the program
 function orbits()
 syms x y;
+    Rxy1 = generateRxy1(2);
     Rxy2 = generateRxy2(2);
+    Rxy3 = generateRxy3(2);
     SL2mod2 = generateSL2modN(2);    
     SL2mod3 = generateSL2modN(3);
-        
-    Rxy1 = generateRxy1(2);
     
+    % Comment out the ones you don't want to use
     disp('Mapping orbits using SL2(mod 2) and R[x,y]_1:');
     for i = 1:length(SL2mod2)
         currentMat = SL2mod2(:, :, i);
@@ -45,6 +46,24 @@ syms x y;
         mapOrbits(currentMat, Rxy2, 2, 3); 
         fprintf('\n');
     end
+    
+    disp('Mapping orbits using SL2(mod 2) and R[x,y]_3:');
+    for i = 1:length(SL2mod2)
+        currentMat = SL2mod2(:, :, i);
+        disp('Using matrix:');
+        disp(currentMat);
+        mapOrbits(currentMat, Rxy3, 3, 2); 
+        fprintf('\n');
+    end 
+        
+    disp('Mapping orbits using SL2(mod 3) and R[x,y]_3:');
+    for i = 1:length(SL2mod3)
+        currentMat = SL2mod3(:, :, i);
+        disp('Using matrix:');
+        disp(currentMat);
+        mapOrbits(currentMat, Rxy3, 3, 3); 
+        fprintf('\n');
+    end
 end
 
 % Generates the set of matrices that satisfy SL2 (mod n), given n. 
@@ -70,39 +89,15 @@ function mapOrbits(SL2modN, RxyP, p, n)
             result = multiply2(poly, SL2modN, n);
             fprintf('%s ----> %s\n', char(poly), char(result));
         end
+    end   
+    if(p == 3)
+        for i = 1:length(RxyP)            
+            poly = x^3*RxyP(1,i) + x^2*y*RxyP(2,i) + y^2*x*RxyP(3,i) + y^3*RxyP(4,i);
+            result = multiply3(poly, SL2modN, n);
+            fprintf('%s ----> %s\n', char(poly), char(result));
+        end
     end
     
-end
-
-% Helper function returns the resulting polynomial when applied 
-% to the 2x2 matrix. This is for R[x, y]_2 for R (mod n)
-function result = multiply2(poly, matrix, n)
-    if (poly == 0)
-        result = '0';
-    else
-        syms x y;
-        result = 0; 
-        c = fliplr(coeffs(poly + y^2 + x^2 +x*y) - 1);
-        % Say I have x^2 + xy + y^2
-        % This is represented by [1 1 1]
-        % If x is being multiplied, then it's xa + yb
-        % If y is being multiplied, then it's xc + yd
-
-        % First coefficient: x^2
-        result = result + c(1)*(x*matrix(1, 1) + y*matrix(1, 2))^2;
-
-        % Second coefficient: xy
-        result = result + c(2)*(((x*matrix(1, 1) + y*matrix(1, 2))) * ((x*matrix(2, 1) + y*matrix(2, 2))));
-        
-        % Third coefficient: y^2
-        result = result + c(3)*(x*matrix(2, 1) + y*matrix(2, 2))^2;
-        
-        % MATLAB doesn't like supporting multivariate polynomials
-        % but this persuades it to give me the coefficients I need
-        resultCoeffs = coeffs(result + x^2 + x*y + y^2);
-        resultCoeffs = mod(resultCoeffs -1 , n); 
-        result = x^2*resultCoeffs(1) + x*y*resultCoeffs(2) + y^2* resultCoeffs(3);
-    end
 end
 
 % Helper function returns the resulting polynomial when applied 
@@ -127,7 +122,64 @@ function result = multiply1(poly, matrix, n)
         % MATLAB doesn't like supporting multivariate polynomials
         % but this persuades it to give me the coefficients I need
         resultCoeffs = coeffs(result + x + y);
-        resultCoeffs = mod(resultCoeffs -1 , n); 
+        resultCoeffs = mod(resultCoeffs - 1 , n); 
         result = x*resultCoeffs(2) + y*resultCoeffs(1);
+    end
+end
+
+% Helper function returns the resulting polynomial when applied 
+% to the 2x2 matrix. This is for R[x, y]_2 for R (mod n)
+function result = multiply2(poly, matrix, n)
+    if (poly == 0)
+        result = '0';
+    else
+        syms x y;
+        result = 0; 
+        c = fliplr(coeffs(poly + y^2 + x^2 +x*y) - 1);
+
+        % First coefficient: x^2
+        result = result + c(1)*(x*matrix(1, 1) + y*matrix(1, 2))^2;
+
+        % Second coefficient: xy
+        result = result + c(2)*(((x*matrix(1, 1) + y*matrix(1, 2))) * ((x*matrix(2, 1) + y*matrix(2, 2))));
+        
+        % Third coefficient: y^2
+        result = result + c(3)*(x*matrix(2, 1) + y*matrix(2, 2))^2;
+        
+        % MATLAB doesn't like supporting multivariate polynomials
+        % but this persuades it to give me the coefficients I need
+        resultCoeffs = coeffs(result + x^2 + x*y + y^2);
+        resultCoeffs = mod(resultCoeffs -1 , n); 
+        result = x^2*resultCoeffs(1) + x*y*resultCoeffs(2) + y^2* resultCoeffs(3);
+    end
+end
+
+% Helper function returns the resulting polynomial when applied 
+% to the 2x2 matrix. This is for R[x, y]_3 for R (mod n)
+function result = multiply3(poly, matrix, n)
+    if (poly == 0)
+        result = '0';
+    else
+        syms x y;
+        result = 0; 
+        c = coeffs(poly + x^3 + x^2*y + x*y^2 + y^3) - 1;
+
+        % First coefficient: x^3
+        result = result + c(1)*(x*matrix(1, 1) + y*matrix(1, 2))^3;
+
+        % Second coefficient: x^2*y
+        result = result + c(2)*(((x*matrix(1, 1) + y*matrix(1, 2)))^2 * ((x*matrix(2, 1) + y*matrix(2, 2))));
+        
+        % Third coefficient: x*y^2
+        result = result + c(3)*(((x*matrix(1, 1) + y*matrix(1, 2))) * ((x*matrix(2, 1) + y*matrix(2, 2)))^2);
+        
+        % Fourth coefficient: y^3        
+        result = result + c(4)*(x*matrix(2, 1) + y*matrix(2, 2))^3;
+        
+        % MATLAB doesn't like supporting multivariate polynomials
+        % but this persuades it to give me the coefficients I need
+        resultCoeffs = coeffs(result + x^3 + x^2*y + x*y^2 + y^3);
+        resultCoeffs = mod(resultCoeffs -1 , n); 
+        result = x^3*resultCoeffs(1) + x^2*y*resultCoeffs(2) + x*y^2*resultCoeffs(3) + y^3*resultCoeffs(4);
     end
 end
