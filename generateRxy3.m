@@ -1,5 +1,5 @@
-% TODO come up with a way to make this one function %
-% Recursion?? that'll probably maybe work
+% Generates R[x, y]_3 
+% Parameter: n - modulus
 function Rxy3 = generateRxy3(n)
     syms x y; 
     c = coeffs(expand((x + y)^3));

@@ -1,3 +1,5 @@
+% Generates R[x, y]_1 
+% Parameter: n - modulus
 function Rxy1 = generateRxy1(n)
     syms x y; 
     c = coeffs(expand((x + y)));
