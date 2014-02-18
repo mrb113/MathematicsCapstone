@@ -135,27 +135,28 @@ function result = multiply2(poly, matrix, n)
     else
         syms x y;
         result = 0; 
-        c = fliplr(coeffs(poly + y^2 + x^2 +x*y) - 1);
+        c = fliplr(coeffs(poly + x^2 + x*y + y^2) - 1);
 
         % First coefficient: x^2
-        result = result + c(1)*(x*matrix(1, 1) + y*matrix(1, 2))^2;
+        result = c(3)*(x*matrix(1, 1) + y*matrix(1, 2))^2;
 
         % Second coefficient: xy
         result = result + c(2)*(((x*matrix(1, 1) + y*matrix(1, 2))) * ((x*matrix(2, 1) + y*matrix(2, 2))));
         
         % Third coefficient: y^2
-        result = result + c(3)*(x*matrix(2, 1) + y*matrix(2, 2))^2;
+        result = result + c(1)*(x*matrix(2, 1) + y*matrix(2, 2))^2;
         
         % MATLAB doesn't like supporting multivariate polynomials
         % but this persuades it to give me the coefficients I need
         resultCoeffs = coeffs(result + x^2 + x*y + y^2);
         resultCoeffs = mod(resultCoeffs -1 , n); 
-        result = x^2*resultCoeffs(1) + x*y*resultCoeffs(2) + y^2* resultCoeffs(3);
+        disp(resultCoeffs); 
+        result = x^2*resultCoeffs(3) + x*y*resultCoeffs(2) + y^2* resultCoeffs(1);
     end
 end
 
 % Helper function returns the resulting polynomial when applied 
-% to the 2x2 matrix. This is for R[x, y]_3 for R (mod n)
+% to the 2x2 matrix. T1his is for R[x, y]_3 for R (mod n)
 function result = multiply3(poly, matrix, n)
     if (poly == 0)
         result = '0';
