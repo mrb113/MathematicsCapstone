@@ -9,16 +9,17 @@ syms x y;
     Rxy3 = generateRxy3(2);
     SL2mod2 = generateSL2modN(2);    
     SL2mod3 = generateSL2modN(3);
+    SL2mod4 = generateSL2modN(4); 
     
-    % Comment out the ones you don't want to use
-    disp('Mapping orbits using SL2(mod 2) and R[x,y]_1:');
-    for i = 1:length(SL2mod2)
-        currentMat = SL2mod2(:, :, i);
-        disp('Using matrix:');
-        disp(currentMat);
-        mapOrbits(currentMat, Rxy1, 1, 2); 
-        fprintf('\n');
-    end
+%     % Comment out the ones you don't want to use
+% %     disp('Mapping orbits using SL2(mod 2) and R[x,y]_1:');
+% %     for i = 1:length(SL2mod2)
+% %         currentMat = SL2mod2(:, :, i);
+% %         disp('Using matrix:');
+% %         disp(currentMat);
+% %         mapOrbits(currentMat, Rxy1, 1, 2); 
+% %         fprintf('\n');
+% %     end
     
     disp('Mapping orbits using SL2(mod 3) and R[x,y]_1:');
     for i = 1:length(SL2mod3)
@@ -28,25 +29,25 @@ syms x y;
         mapOrbits(currentMat, Rxy1, 1, 3); 
         fprintf('\n');
     end
-        
-    disp('Mapping orbits using SL2(mod 2) and R[x,y]_2:');
-    for i = 1:length(SL2mod2)
-        currentMat = SL2mod2(:, :, i);
-        disp('Using matrix:');
-        disp(currentMat);
-        mapOrbits(currentMat, Rxy2, 2, 2); 
-        fprintf('\n');
-    end 
-        
-    disp('Mapping orbits using SL2(mod 3) and R[x,y]_2:');
-    for i = 1:length(SL2mod3)
-        currentMat = SL2mod3(:, :, i);
-        disp('Using matrix:');
-        disp(currentMat);
-        mapOrbits(currentMat, Rxy2, 2, 3); 
-        fprintf('\n');
-    end
-    
+% %         
+% %     disp('Mapping orbits using SL2(mod 2) and R[x,y]_2:');
+% %     for i = 1:length(SL2mod2)
+% %         currentMat = SL2mod2(:, :, i);
+% %         disp('Using matrix:');
+% %         disp(currentMat);
+% %         mapOrbits(currentMat, Rxy2, 2, 2); 
+% %         fprintf('\n');
+% %     end 
+% %         
+%     disp('Mapping orbits using SL2(mod 3) and R[x,y]_2:');
+%     for i = 1:length(SL2mod3)
+%         currentMat = SL2mod3(:, :, i);
+%         disp('Using matrix:');
+%         disp(currentMat);
+%         mapOrbits(currentMat, Rxy2, 2, 3); 
+%         fprintf('\n');
+%     end
+% %     
     disp('Mapping orbits using SL2(mod 2) and R[x,y]_3:');
     for i = 1:length(SL2mod2)
         currentMat = SL2mod2(:, :, i);
@@ -56,14 +57,14 @@ syms x y;
         fprintf('\n');
     end 
         
-    disp('Mapping orbits using SL2(mod 3) and R[x,y]_3:');
-    for i = 1:length(SL2mod3)
-        currentMat = SL2mod3(:, :, i);
-        disp('Using matrix:');
-        disp(currentMat);
-        mapOrbits(currentMat, Rxy3, 3, 3); 
-        fprintf('\n');
-    end
+%     disp('Mapping orbits using SL2(mod 3) and R[x,y]_3:');
+%     for i = 1:length(SL2mod3)
+%         currentMat = SL2mod3(:, :, i);
+%         disp('Using matrix:');
+%         disp(currentMat);
+%         mapOrbits(currentMat, Rxy3, 3, 3); 
+%         fprintf('\n');
+%     end
 end
 
 % Generates the set of matrices that satisfy SL2 (mod n), given n. 
@@ -138,19 +139,18 @@ function result = multiply2(poly, matrix, n)
         c = fliplr(coeffs(poly + x^2 + x*y + y^2) - 1);
 
         % First coefficient: x^2
-        result = c(3)*(x*matrix(1, 1) + y*matrix(1, 2))^2;
+        result = c(1)*(x*matrix(1, 1) + y*matrix(1, 2))^2;
 
         % Second coefficient: xy
         result = result + c(2)*(((x*matrix(1, 1) + y*matrix(1, 2))) * ((x*matrix(2, 1) + y*matrix(2, 2))));
         
         % Third coefficient: y^2
-        result = result + c(1)*(x*matrix(2, 1) + y*matrix(2, 2))^2;
+        result = result + c(3)*(x*matrix(2, 1) + y*matrix(2, 2))^2;
         
         % MATLAB doesn't like supporting multivariate polynomials
         % but this persuades it to give me the coefficients I need
         resultCoeffs = coeffs(result + x^2 + x*y + y^2);
-        resultCoeffs = mod(resultCoeffs -1 , n); 
-        disp(resultCoeffs); 
+        resultCoeffs = mod(resultCoeffs -1 , n);  
         result = x^2*resultCoeffs(3) + x*y*resultCoeffs(2) + y^2* resultCoeffs(1);
     end
 end
@@ -163,7 +163,7 @@ function result = multiply3(poly, matrix, n)
     else
         syms x y;
         result = 0; 
-        c = coeffs(poly + x^3 + x^2*y + x*y^2 + y^3) - 1;
+        c = fliplr(coeffs(poly + x^3 + x^2*y + x*y^2 + y^3) - 1);
 
         % First coefficient: x^3
         result = result + c(1)*(x*matrix(1, 1) + y*matrix(1, 2))^3;
