@@ -1,0 +1,188 @@
+
+\documentclass[a4paper,draft]{amsproc}
+\usepackage{amssymb}
+\usepackage{amscd} %% Package for commutative diagrams
+%\usepackage[dvips]{graphicx} %% Package for inserting illustrations/figures
+
+%% The following packages are useful (you may want to use them):
+%\usepackage{refcheck} %% Checks whether enumerated equations are referred to or not.
+                       %% Please remove unnecessary numbers.
+%\usepackage{cmdtrack} %% Checks whether all author defined macros are used or not
+                       %% (see the end of .log file); unused ones should be removed.
+%% Both of the packages have some limitations---consult package documentations.
+
+\theoremstyle{plain}
+ \newtheorem{thm}{Theorem}[section]
+ \newtheorem{prop}{Proposition}[section]
+ \newtheorem{lem}{Lemma}[section]
+ \newtheorem{cor}{Corollary}[section]
+\theoremstyle{definition}
+ \newtheorem{exm}{Example}[section]
+ \newtheorem{dfn}{Definition}[section]
+\theoremstyle{remark}
+ \newtheorem{rem}{Remark}[section]
+ \numberwithin{equation}{section}
+
+%% Please, do not change the following four lines:
+\renewcommand{\le}{\leqslant}\renewcommand{\leq}{\leqslant}
+\renewcommand{\ge}{\geqslant}\renewcommand{\geq}{\geqslant}
+\renewcommand{\setminus}{\smallsetminus}
+\setlength{\textwidth}{28cc} \setlength{\textheight}{42cc}
+
+\title[Running title (header)]{TITLE}
+
+\subjclass[2010]{Primary REQUIRED; Secondary OPTIONAL}
+
+%% Please use the newest classification -- 2010
+%% available at  http://msc2010.org/MSC-2010-server.html
+%% and the newest amsproc.cls -- from 2009!!
+%% Please, classify to the third level,
+%% e.g., 26A and 26Axx are not satisfsctory.
+
+\keywords{optional, but desirable}
+
+\author[Surname]{\bfseries Name Surname}
+
+\address{
+Department of Mathematics \\ % \hfill (Received 00 00 2010)\\
+Our University   \\ %\hfill (Revised  00 00 2010)\\
+Town\\
+Country}
+\email{user@server}
+
+%% OTHER AUTHOR(S):
+%\author[]{}
+%\address{ }
+%\email{}
+
+\thanks{Partially supported by ... } %% optional
+
+\dedicatory{Communicated by }
+%% We use this for communication information.
+%% If you want do dedicate your paper to somebody, then please use \thanks{}
+
+\begin{document}
+
+%{\begin{flushleft}\baselineskip9pt\scriptsize
+%PUBLICATIONS DE L'INSTITUT MATH\'EMATIQUE\newline
+%Nouvelle s\'erie, tome 91(105) (2012), od--do \hfill DOI:
+%\end{flushleft}}
+\vspace{18mm} \setcounter{page}{1} \thispagestyle{empty}
+
+
+\begin{abstract}
+An abstract is OBLIGATORY!
+Please do not use author defined macros in the abstract
+and avoid references to anything in the paper,
+since the abstract will be detached from the article.
+\end{abstract}
+
+\maketitle
+
+\section{Section title}  %% Please avoid complicated formulas in titles
+
+Insert your text here. If there are subsections, then you may use:
+
+\subsection{Subsection title}
+You may also use subsubsections,
+but put a line or two of text between the subsection
+and the subsubsection titles please.
+
+Proclaims (theorems, propositions,...) should be
+inserted as follows:
+
+\begin{thm} \label{some label} % of course, label is optional
+Statement of the theorem.
+\end{thm}
+
+Please, do not put a proclaim immediately following a subtitle of any level.
+Write a line or two of text in between.
+
+\begin{proof}
+A proof. For displayed equations (formulas) you may use
+\begin{equation}\label{eq:a1b}
+e^{i\pi}=-1
+\end{equation}
+and similar \LaTeX\ constructions (align(ed), multline, gather(ed),\dots).
+That way you may refer to \eqref{eq:a1b} in the subsequent text.
+We strongly encourage the usage of this dynamic system of referencing
+instead of a statical one, for example to (1.1).
+
+If you do not refer to an equation, then you may write it as
+\[
+e^{i\pi}=-1
+\]
+(preferred) or
+\begin{equation*}
+e^{i\pi}=-1
+\end{equation*}
+In such a starred version the equation will not be enumerated.
+If you want to use a distinctive tag to an equation,
+you may do so in the following manner:
+\begin{equation}\label{distinctive}
+e^{i\pi}=-1
+\tag{$*$}
+\end{equation}
+So you can refer to \eqref{distinctive}.
+
+The symbol for the end of a proof will appear automatically.
+\end{proof}
+
+Formulas should be displayed \emph{only}
+if they must be enumerated for a subsequent reference
+or if they are too long or complicated.
+Please \emph{do not} enumerate displayed formulas that are not referred to.
+
+Send figures/illustrations as eps files (each figure/illustration in a separate file).
+
+Figures can be inserted in the following way:
+
+\begin{figure}[htb]
+%\includegraphisc[width=99mm]{filename.eps}
+\caption{}
+\label{some label}
+\end{figure}
+
+A commutative diagram can be inserted as follows:
+\[
+\begin{CD}
+TQ @>{\kappa}>> T^*Q \\
+@V{g\diamond}VV  @VV{g\cdot}V \\
+TQ @>>{\kappa}> T^*Q \\
+\end{CD}
+\]
+
+Only \emph{standard} abbreviations for names of journals and other serials 
+should be used in references. (see http://zbmath.org/journals/)
+
+
+\bibliographystyle{amsplain}
+\begin{thebibliography}{n} %% n is number of items, or the largest label
+
+\bibitem{1}\label{some label - optional} A.\,U. Thor, (not Thor, A.U.!)
+\emph{Title of paper},
+J. Math. \textbf{99} (2008), 111--222.
+
+\bibitem{2} A.\,U. Thor,
+\emph{Title of paper},
+in: E. Ditor (ed.), \emph{Title of Book}, Publisher, City, Year, 888--999.
+
+\end{thebibliography}
+
+\end{document}
+
+%% To be filled in the journal office:
+
+@author:
+@affiliation:
+@title:
+@language: English
+@pages:
+@classification1:
+@classification2:
+@keywords:
+@abstract:
+@filename:
+@EOI
+
+
