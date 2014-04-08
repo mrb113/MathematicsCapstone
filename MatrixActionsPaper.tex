@@ -36,15 +36,9 @@
 \address{
 Department of Mathematics \\ % \hfill (Received 00 00 2010)\\
 Case Western Reserve University   \\ %\hfill (Revised  00 00 2010)\\
-Town\\
-Country}
+Cleveland, OH\\
+}
 \email{mrb113@case.edu}
-
-%% OTHER AUTHOR(S):
-%\author[]{}
-%\address{ }
-%\email{}
-
 
 \begin{document}
 
@@ -52,17 +46,14 @@ Country}
 
 
 \begin{abstract}
-An abstract is OBLIGATORY!
-Please do not use author defined macros in the abstract
-and avoid references to anything in the paper,
-since the abstract will be detached from the article.
+TODO: Once I write the paper, come up with an abstract to fit it. Matrices and polynomials and stuff. 
 \end{abstract}
 
 \maketitle
 
 \section{Mathematical Foundations} 
 
-Insert your text here. If there are subsections, then you may use:
+TODO: I need some sort of introduction here! Math, yo. 
 
 \subsection{Special linear groups of degree 2 mod n}
 A special linear group is a special case of a modular group. We are interested in the following type of special linear group in particular: 
@@ -100,91 +91,120 @@ $$
 
 \subsection{Polynomials with coefficients mod n}
 We claim above that the matrices in $SL_{2}$ mod $n$ can act on polynomials. To do that, we must define a specific set of polynomials to work with. 
-Since SL
+We thus define the set of polynomials that the matrices: 
 \begin{dfn}
-TODO RxyN
+(\textbf{TODO:} reword this, it's not so easy to comprehend the way it is now) The set $R[x,y]_{n}$ is made of set of polynomials with symbolic terms x and y of degree n with the coefficients all possible combinations of the elements of the set $R$. 
 \end{dfn}
+In this paper, we will consider $R$ to be positive integers mod 2 unless otherwise noted. That is, $R = \{ 0, 1 \}$. To construct $R[x,y]_{n}$, take $(x+y)^{n}$ and take the coefficients mod $n$.
 
-Proclaims (theorems, propositions,...) should be
-inserted as follows:
-
-\begin{prop}
-Statement of the theorem.
+\begin{prop}The number of elements in $R[x,y]_{n}$ is equal to $r^{n + 1} - 1$, where $r$ is the number of elements in $R$. 
 \end{prop}
 
-Please, do not put a proclaim immediately following a subtitle of any level.
-Write a line or two of text in between.
-
 \begin{proof}
-A proof. For displayed equations (formulas) you may use
-\begin{equation}\label{eq:a1b}
-e^{i\pi}=-1
-\end{equation}
-and similar \LaTeX\ constructions (align(ed), multline, gather(ed),\dots).
+We prove the proposition by induction: \\
+\textbf{Inductive hypothesis: } TODO Actually do the proof on paper first. \\
+\textbf{Basis step: } TODO \\
+\textbf{Inductive step:} TODO \\
 
-We strongly encourage the usage of this dynamic system of referencing
-instead of a statical one, for example to (1.1).
+Therefore, the number of elements in $R[x,y]_{n}$ is equal to $r^{n + 1}$. 
+\end{proof}
+To further illustrate these concepts, take the example below. 
+\begin{exm}
+\textbf{TODO} this might be a little confusing, too. 
+Let $R = \{ 0, 1 \}$.  Let $n = 2$. Our goal is to generate $R[x,y]_{2}$, so we begin by expanding $(x + y)^{2}$. 
+$$(x + y)^{2} = x^{2} + 2xy + y^{2} $$
+This gives us an equation of the form $a*x^{2} + b*xy + c*y^{2} $
 
-If you do not refer to an equation, then you may write it as
-\[
-e^{i\pi}=-1
-\]
-(preferred) or
-\begin{equation*}
-e^{i\pi}=-1
-\end{equation*}
-In such a starred version the equation will not be enumerated.
-If you want to use a distinctive tag to an equation,
-you may do so in the following manner:
-\begin{equation}\label{distinctive}
-e^{i\pi}=-1
-\tag{$*$}
-\end{equation}
-So you can refer to \eqref{distinctive}.
+Next, we form all combinations of this equation by plugging the elements of $R$ into $a, b$, and $c$: 
+TODO
+\begin{align*}
+0x^{2} + 0xy + 0y^{2} &= 0 \\
+1x^{2} + 0xy + 0y^{2} &= x^{2} \\
+0x^{2} +1xy + 0y^{2}  &= xy \\
+0x^{2} + 0xy + 1y^{2} &= y^{2} \\
+1x^{2} + 0xy + 1y^{2} &= x^{2} + y^{2} \\
+0x^{2} + 1xy + 1y^{2} &= xy + y^{2} \\
+1x^{2} + 1xy + 1y^{2}  &= x^{2} + xy + y^{2}\\
+\end{align*}
 
-The symbol for the end of a proof will appear automatically.
+Since  $R = \{ 0, 1 \}$, $r$ = 2. By the argument in Proposition 1.1, we can verify  in $R[x,y]_{2}$ is equal to $2^{2 + 1} - 1$ = 7.
+\end{exm}
+
+\section{Matrix Actions on R[x,y]$_{n}$} 
+So far, we have constructed special linear groups of matrices and sets of polynomials with coefficients mod n. This section details how the matrices in $SL_{2}$ mod $n$ can act on polynomials in $R[x,y]_{n}$. 
+
+\subsection{Preliminaries}
+For a polynomial in $R[x,y]_{n}$ and a matrix in $SL_{2}$ mod $n$, the matrix acts on the polynomial according to the following rule: 
+$$
+x\begin{bmatrix}
+ a&b \\ 
+ c&d 
+\end{bmatrix} = xa + yb 
+$$
+$$
+y\begin{bmatrix}
+ a&b \\ 
+ c&d 
+\end{bmatrix} = xc + yd 
+$$
+
+\begin{exm}
+Apply the matrix 
+$\begin{bmatrix}
+ 0&1 \\ 
+ 1&0 
+\end{bmatrix}$ in $SL_{2}$ mod $2$ to the polynomial  $xy + y^{2}$ in $R[x,y]_{2}$ 
+\textbf{TODO} work out this example
+\end{exm}
+
+\subsection{Orbits}
+When we allow every matrix in $SL_{2}$ mod $n$ to act on all polynomials in $R[x,y]_{n}$ for fixed values of $n$ , patterns begin to emerge. \textbf{TODO} this notation.. oh no these ns aren't the same n. That's distressing. \\
+One can observe that some polynomials in $R[x,y]_{n}$ generate the same result after being acted on by every matrix in $SL_{2}$ mod $n$. 
+\begin{exm}
+Apply the matrices in $SL_{2}$ mod $2$ to the polynomials in $R[x,y]_{2}$ 
+\textbf{TODO} work out this example
+\end{exm}
+
+\section{Irreducible Polynomial Sets}
+\textbf{TODO} define what I mean
+\begin{exm}
+In  $SL_{2}$ mod $2$, $\underline{1}$ and $\underline{2}$ are irreducible. We show this by
+\textbf{TODO} work out this example
+\end{exm}
+
+\subsection{Reducible Polynomial Sets}
+We have shown that there exist irreducible polynomial sets such as $\underline{1}$ and $\underline{2}$ in  $SL_{2}$ mod $2$. However, we can also illustrate that sets of higher degree can be condensed to irreducibles. 
+\textbf{TODO} Please do go on
+\begin{exm}
+In  $SL_{2}$ mod $2$, we can find $\underline{1}$ and $\underline{2}$ within $\underline{3}$. 
+\textbf{TODO} work out this example
+\end{exm}
+
+We can continue the search in polynomial sets of a higher order. 
+\begin{exm}
+In  $SL_{2}$ mod $2$, we can find $\underline{1}$ and $\underline{2}$ within $\underline{4}$. 
+\textbf{TODO} work out this example
+\end{exm}
+
+\subsection{Generalization of irreducible behavior in $SL_{2}$ mod $2$ }
+\textbf{TODO} show the pattern and do a proof of some sort
+
+\subsection{Irreducibles in $SL_{2}$ mod $3$}
+\textbf{TODO} Give a few examples, show the pattern and do a proof of some sort
+
+\subsection{Irreducible behavior in $SL_{2}$ mod $n$}
+\textbf{TODO} Make a generalization
+\begin{prop}
+ In $SL_{2}$ mod $n$, terms $\underline{1}$, ..., $\underline{n}$ are irreducible. 
+\end{prop}
+\begin{proof}
+{TODO} Prove it!
 \end{proof}
 
-Formulas should be displayed \emph{only}
-if they must be enumerated for a subsequent reference
-or if they are too long or complicated.
-Please \emph{do not} enumerate displayed formulas that are not referred to.
-
-Send figures/illustrations as eps files (each figure/illustration in a separate file).
-
-Figures can be inserted in the following way:
-
-\begin{figure}[htb]
-%\includegraphisc[width=99mm]{filename.eps}
-\caption{}
-\label{some label}
-\end{figure}
-
-A commutative diagram can be inserted as follows:
-\[
-\begin{CD}
-TQ @>{\kappa}>> T^*Q \\
-@V{g\diamond}VV  @VV{g\cdot}V \\
-TQ @>>{\kappa}> T^*Q \\
-\end{CD}
-\]
-
-Only \emph{standard} abbreviations for names of journals and other serials 
-should be used in references. (see http://zbmath.org/journals/)
-
-
+\section{Conclusion}
+{TODO} Wrap it up
 \bibliographystyle{amsplain}
-\begin{thebibliography}{n} %% n is number of items, or the largest label
-
-\bibitem{1}\label{some label - optional} A.\,U. Thor, (not Thor, A.U.!)
-\emph{Title of paper},
-J. Math. \textbf{99} (2008), 111--222.
-
-\bibitem{2} A.\,U. Thor,
-\emph{Title of paper},
-in: E. Ditor (ed.), \emph{Title of Book}, Publisher, City, Year, 888--999.
-
-\end{thebibliography}
+%% Add bibliography if applicable
 
 \end{document}
 
