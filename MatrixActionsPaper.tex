@@ -29,9 +29,9 @@
 \renewcommand{\setminus}{\smallsetminus}
 \setlength{\textwidth}{28cc} \setlength{\textheight}{42cc}
 
-\title[Running title (header)]{Matrix Actions on Polynomials}
+\title[Matrix Actions]{Matrix Actions on Polynomials}
 
-\author[Surname]{\bfseries Michelle Bergeron}
+\author[Bergeron]{\bfseries Michelle Bergeron}
 
 \address{
 Department of Mathematics \\ % \hfill (Received 00 00 2010)\\
@@ -56,7 +56,7 @@ TODO: Once I write the paper, come up with an abstract to fit it. Matrices and p
 TODO: I need some sort of introduction here! Math, yo. 
 
 \subsection{Special linear groups of degree 2 mod n}
-A special linear group is a special case of a modular group. We are interested in the following type of special linear group in particular: 
+A special linear group is a special case of a modular group. Special linear groups can be defined over any commutative ring with unity. We are interested in the case where the ring is the integers mod $n$. 
 \begin{dfn}
 The special linear group $SL_{2}$ mod $n$ is defined as all 2x2 matrices with determinant 1 comprised of entries mod $n$.
 \end{dfn}
@@ -90,14 +90,14 @@ $$
 $$
 
 \subsection{Polynomials with coefficients mod n}
-We claim above that the matrices in $SL_{2}$ mod $n$ can act on polynomials. To do that, we must define a specific set of polynomials to work with. 
+We claim that the matrices in $SL_{2}$ mod $n$ can act on polynomials. To do that, we must define a specific set of polynomials to work with. 
 We thus define the set of polynomials that the matrices: 
 \begin{dfn}
-(\textbf{TODO:} reword this, it's not so easy to comprehend the way it is now) The set $R[x,y]_{n}$ is made of set of polynomials with symbolic terms x and y of degree n with the coefficients all possible combinations of the elements of the set $R$. 
+(\textbf{TODO:} reword this, it's not so easy to comprehend the way it is now) The set $R[x,y]_{k}$is made of set of polynomials with symbolic terms x and y of degree n with the coefficients all possible combinations of the elements of the set $R$. 
 \end{dfn}
-In this paper, we will consider $R$ to be positive integers mod 2 unless otherwise noted. That is, $R = \{ 0, 1 \}$. To construct $R[x,y]_{n}$, take $(x+y)^{n}$ and take the coefficients mod $n$.
+For now, we will consider $R$ to be positive integers mod 2. That is, $R = \mathbb{Z}/2$. To construct $R[x,y]_{k}$, take $(x+y)^{k}$ and take the coefficients mod $n$.
 
-\begin{prop}The number of elements in $R[x,y]_{n}$ is equal to $r^{n + 1} - 1$, where $r$ is the number of elements in $R$. 
+\begin{prop}The number of elements in $R[x,y]_{k}$is equal to $r^{n + 1}$, where $r$ is the number of elements in $R$. 
 \end{prop}
 
 \begin{proof}
@@ -106,35 +106,35 @@ We prove the proposition by induction: \\
 \textbf{Basis step: } TODO \\
 \textbf{Inductive step:} TODO \\
 
-Therefore, the number of elements in $R[x,y]_{n}$ is equal to $r^{n + 1}$. 
+Therefore, the number of elements in $R[x,y]_{k}$is equal to $r^{k + 1}$. 
 \end{proof}
 To further illustrate these concepts, take the example below. 
 \begin{exm}
 \textbf{TODO} this might be a little confusing, too. 
-Let $R = \{ 0, 1 \}$.  Let $n = 2$. Our goal is to generate $R[x,y]_{2}$, so we begin by expanding $(x + y)^{2}$. 
+Let $R = \mathbb{Z}/2$.  Let $n = 2$. Our goal is to generate $R[x,y]_{2}$, so we begin by expanding $(x + y)^{2}$. 
 $$(x + y)^{2} = x^{2} + 2xy + y^{2} $$
 This gives us an equation of the form $a*x^{2} + b*xy + c*y^{2} $
 
 Next, we form all combinations of this equation by plugging the elements of $R$ into $a, b$, and $c$: 
-TODO
 \begin{align*}
 0x^{2} + 0xy + 0y^{2} &= 0 \\
 1x^{2} + 0xy + 0y^{2} &= x^{2} \\
 0x^{2} +1xy + 0y^{2}  &= xy \\
 0x^{2} + 0xy + 1y^{2} &= y^{2} \\
 1x^{2} + 0xy + 1y^{2} &= x^{2} + y^{2} \\
+1x^{2} + 1xy + 0y^{2} &= x^{2} + xy \\
 0x^{2} + 1xy + 1y^{2} &= xy + y^{2} \\
 1x^{2} + 1xy + 1y^{2}  &= x^{2} + xy + y^{2}\\
 \end{align*}
 
-Since  $R = \{ 0, 1 \}$, $r$ = 2. By the argument in Proposition 1.1, we can verify  in $R[x,y]_{2}$ is equal to $2^{2 + 1} - 1$ = 7.
+Since  $R = \mathbb{Z}/2$, $r$ = 2. By the argument in Proposition 1.1, we can verify  in $R[x,y]_{2}$ is equal to $2^{2 + 1}$ = 8.
 \end{exm}
 
-\section{Matrix Actions on R[x,y]$_{n}$} 
-So far, we have constructed special linear groups of matrices and sets of polynomials with coefficients mod n. This section details how the matrices in $SL_{2}$ mod $n$ can act on polynomials in $R[x,y]_{n}$. 
+\section{Matrix Actions on R[x,y]$_{k}$} 
+So far, we have constructed special linear groups of matrices and sets of polynomials with coefficients mod n. This section details how the matrices in $SL_{2}$ mod $n$ can act on polynomials in $R[x,y]_{k}$. 
 
 \subsection{Preliminaries}
-For a polynomial in $R[x,y]_{n}$ and a matrix in $SL_{2}$ mod $n$, the matrix acts on the polynomial according to the following rule: 
+For a polynomial in $R[x,y]_{k}$and a matrix in $SL_{2}$ mod $n$, the matrix acts on the polynomial according to the following rule: 
 $$
 x\begin{bmatrix}
  a&b \\ 
@@ -148,6 +148,11 @@ y\begin{bmatrix}
 \end{bmatrix} = xc + yd 
 $$
 
+However, most of the polynomials we are working with are more complex than simply $x$ and $y$. Therefore, we need to establish how to use the matrix action on more complicated polynomials. 
+\begin{dfn}
+\textbf{TODO} show how it works on multiplied and added polynomials
+\end{dfn}
+
 \begin{exm}
 Apply the matrix 
 $\begin{bmatrix}
@@ -158,8 +163,8 @@ $\begin{bmatrix}
 \end{exm}
 
 \subsection{Orbits}
-When we allow every matrix in $SL_{2}$ mod $n$ to act on all polynomials in $R[x,y]_{n}$ for fixed values of $n$ , patterns begin to emerge. \textbf{TODO} this notation.. oh no these ns aren't the same n. That's distressing. \\
-One can observe that some polynomials in $R[x,y]_{n}$ generate the same result after being acted on by every matrix in $SL_{2}$ mod $n$. 
+When we allow every matrix in $SL_{2}$ mod $n$ to act on all polynomials in $R[x,y]_{k}$for fixed values of $n$ and $k$ , patterns begin to emerge.
+One can observe that some polynomials in $R[x,y]_{k}$generate the same result after being acted on by every matrix in $SL_{2}$ mod $n$. 
 \begin{exm}
 Apply the matrices in $SL_{2}$ mod $2$ to the polynomials in $R[x,y]_{2}$ 
 \textbf{TODO} work out this example
@@ -167,6 +172,12 @@ Apply the matrices in $SL_{2}$ mod $2$ to the polynomials in $R[x,y]_{2}$
 
 \section{Irreducible Polynomial Sets}
 \textbf{TODO} define what I mean
+We define alternate notation for $R[x,y]_{k}$ to make it easier to use to use with irreducible polynomial sets. 
+\begin{dfn}
+$R[x,y]_{k}$ = $\underline{k-1}$
+\end{dfn} 
+Therefore, $R[x,y]_{2}$ = $\underline{1}$, $R[x,y]_{3}$ = $\underline{2}$, etc. Using this new notation, we can then illustrate an example of polynomial set irreducibility. 
+
 \begin{exm}
 In  $SL_{2}$ mod $2$, $\underline{1}$ and $\underline{2}$ are irreducible. We show this by
 \textbf{TODO} work out this example
