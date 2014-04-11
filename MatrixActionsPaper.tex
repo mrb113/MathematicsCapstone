@@ -93,11 +93,11 @@ $$
 We claim that the matrices in $SL_{2}$ mod $n$ can act on polynomials. To do that, we must define a specific set of polynomials to work with. 
 We thus define the set of polynomials that the matrices: 
 \begin{dfn}
-(\textbf{TODO:} reword this, it's not so easy to comprehend the way it is now) The set $R[x,y]_{k}$is made of set of polynomials with symbolic terms x and y of degree n with the coefficients all possible combinations of the elements of the set $R$. 
+Let $R[x,y]$ be the ring of polynomials in two variables, x and y, with coefficients in $R = \mathbb{Z}/n\mathbb{Z}$. An element of $R[x,y]$ of the form  $ax^{my^{n}}$, with $a$ in $R$, is called a monomial. Define the degree of the monomial $ax^{my^{n}}$ to be $m+n$. Say that an element $p$ in $R[x,y]$ is homogeneous if p is a sum of monomials all of the same degree. (Say that 0 is homogeneous of every degree, since $0=0x^{my^{n}}$ for all m and n.) Write $R[x,y]_{k}$ for the set of polynomials in $R[x,y]$ that are homogeneous of degree $k$.
 \end{dfn}
 For now, we will consider $R$ to be positive integers mod 2. That is, $R = \mathbb{Z}/2$. To construct $R[x,y]_{k}$, take $(x+y)^{k}$ and take the coefficients mod $n$.
 
-\begin{prop}The number of elements in $R[x,y]_{k}$is equal to $r^{n + 1}$, where $r$ is the number of elements in $R$. 
+\begin{prop}The number of elements in $R[x,y]_{k}$ is equal to $r^{n + 1}$, where $r$ is the number of elements in $R$. 
 \end{prop}
 
 \begin{proof}
@@ -192,10 +192,28 @@ When we allow every matrix in $SL_{2}$ mod $n$ to act on all polynomials in $R[x
 One can observe that some polynomials in $R[x,y]_{k}$generate the same result after being acted on by every matrix in $SL_{2}$ mod $n$. 
 \begin{exm}
 Apply the matrices in $SL_{2}$ mod $2$ to the polynomials in $R[x,y]_{2}$ 
-\textbf{TODO} work out this example
+We demonstrate the process with $\begin{bmatrix}
+ 0&1 \\ 
+ 1&0 
+\end{bmatrix} $, mapping $\mathcal{M}(p) \rightarrow p$ for $p$ $\epsilon$ $R[x,y]_{2}$: \\
+
+%% TODO how to align
+\begin{center}
+$0 \rightarrow 0$, \\
+$y^{2} \rightarrow x^{2}$, \\
+$xy \rightarrow xy$, \\
+$xy + y^{2} \rightarrow xy + x^{2}$, \\
+$x^{2} \rightarrow y^{2}$, \\
+$x^{2} + y^{2} \rightarrow x^{2} + y^{2}$, \\
+$xy + x^{2} \rightarrow xy + y^{2}$, \\
+$xy + x^{2} + y^{2} \rightarrow xy + x^{2} + y^{2}$
+\end{center}
+
+Performing this on the rest of the matrices in $SL_{2}$ mod $n$ are left as an exercise to the reader.
+
 \end{exm}
 
-If we pay close attention the results of the lengthy example, we see that two polynomials in $R[x,y]_{2}$ are always mapped to themselves: 0 and $x^{2} + xy + y^{2}$. Upon closer inspection, the groups \textbf{TODO which groups} always map to each other. We call these groupings \textit{\textbf{orbits}}. 
+If one continues applying $\mathcal{M}$ to $R[x,y]_{2}$ using the rest of the matrices in $SL_{2}$ mod $2$, we see that two polynomials in $R[x,y]_{2}$ are always mapped to themselves: 0 and $x^{2} + xy + y^{2}$. Upon closer inspection, the groups \textbf{TODO which groups} always map to each other. We call these groupings \textit{\textbf{orbits}}. 
 
 \section{Irreducible Polynomial Sets}
 To further understand the properties of these polynomial sets, we introduce the notion of irreducibility. 
