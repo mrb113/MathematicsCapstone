@@ -97,7 +97,7 @@ Let $R[x,y]$ be the ring of polynomials in two variables, x and y, with coeffici
 \end{dfn}
 For now, we will consider $R$ to be positive integers mod 2. That is, $R = \mathbb{Z}/2$. To construct $R[x,y]_{k}$, take $(x+y)^{k}$ and take the coefficients mod $n$.
 
-\begin{prop}The number of elements in $R[x,y]_{k}$ is equal to $r^{n + 1}$, where $r$ is the number of elements in $R$. 
+\begin{prop}The number of elements in $R[x,y]_{k}$ is equal to $n^{k + 1}$, where $r$ is the number of elements in $R$. 
 \end{prop}
 
 \begin{proof}
@@ -195,7 +195,7 @@ Apply the matrices in $SL_{2}$ mod $2$ to the polynomials in $R[x,y]_{2}$
 We demonstrate the process with $\begin{bmatrix}
  0&1 \\ 
  1&0 
-\end{bmatrix} $, mapping $\mathcal{M}(p) \rightarrow p$ for $p$ $\epsilon$ $R[x,y]_{2}$: \\
+\end{bmatrix} $, mapping $p \mapsto \mathcal{M}(p)$ for $p$ $\epsilon$ $R[x,y]_{2}$: \\
 
 %% TODO how to align
 \begin{center}
@@ -219,7 +219,7 @@ If one continues applying $\mathcal{M}$ to $R[x,y]_{2}$ using the rest of the ma
 To further understand the properties of these polynomial sets, we introduce the notion of irreducibility. 
 First, we define alternate notation for $R[x,y]_{k}$ to make it easier to use to use with irreducible polynomial sets. 
 \begin{dfn}
-$R[x,y]_{k}$ = $\underline{k-1}$
+$R[x,y]_{k}$ = $\underline{k+1}$
 \end{dfn} 
 What does it mean for such a set to be irreducible? 
 \begin{dfn}
