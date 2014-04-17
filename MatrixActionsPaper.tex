@@ -134,7 +134,7 @@ Since  $R = \mathbb{Z}/2$, $r$ = 2. By the argument in Proposition 1.1, we can v
 So far, we have constructed special linear groups of matrices and sets of polynomials with coefficients mod n. This section details how the matrices in $SL_{2}$ mod $n$ can act on polynomials in $R[x,y]_{k}$. 
 
 \subsection{Preliminaries}
-For a polynomial in $R[x,y]_{k}$and a matrix in $SL_{2}$ mod $n$, the matrix acts on the polynomial according to the following rule, $\mathcal{M}$: 
+For a polynomial in $R[x,y]_{k}$and a matrix in $SL_{2}$ mod $n$, the matrix acts on the polynomial according to the following rule, $\mathcal{A}$: 
 $$
 x\begin{bmatrix}
  a&b \\ 
@@ -148,12 +148,14 @@ y\begin{bmatrix}
 \end{bmatrix} = xc + yd 
 $$
 
-However, most of the polynomials we are working with are more complex than simply $x$ and $y$. Therefore, we need to establish how to use the matrix action on more complicated polynomials. 
+However, most of the polynomials we are working with are more complex than simply $x$ and $y$. Therefore, we need to establish how to use the matrix action $\mathcal{A}$ on more complicated polynomials. 
 \begin{dfn}
-Combining polynomials with $\mathcal{M}$:\\
-\textbf{Addition Rule}: For a polynomial $x + y, \mathcal{M}(x + y) = \mathcal{M}(x) + \mathcal{M}(y)$ \\
-\textbf{Multiplication Rule}: For a polynomial $x*y, \mathcal{M}(x*y) = \mathcal{M}(x) * \mathcal{M}(y)$ with the product coefficients taken mod $k$.
-The two rules can be combined, with multiplication taking precedence over addition. 
+For $p, q \epsilon R[x,y]$ and $r \epsilon R$, require: 
+\begin{enumerate}
+\item $(p+q)\mathcal{A} = p\mathcal{A} + q\mathcal{A}$
+\item $pq\mathcal{A} = (p\mathcal{A})(q\mathcal{A}$
+\item $rp\mathcal{A} = r(p\mathcal{A})$
+\end{enumerate}
 \end{dfn}
 
 \begin{exm}
@@ -162,13 +164,13 @@ Apply the matrix
 $\begin{bmatrix}
  0&1 \\ 
  1&0 
-\end{bmatrix}$ in $SL_{2}$ mod $2$ to the polynomial $xy + y^{2}$ in $R[x,y]_{2}$ using $\mathcal{M}.$ \\ \\
+\end{bmatrix}$ in $SL_{2}$ mod $2$ to the polynomial $xy + y^{2}$ in $R[x,y]_{2}$ using $\mathcal{A}.$ \\ \\
 \textbf{Solution:} 
-To take $\mathcal{M}(xy + y^{2})$ using $\begin{bmatrix}
+To take $(xy + y^{2})\mathcal{A}$ using $\begin{bmatrix}
  0&1 \\ 
  1&0 
-\end{bmatrix}$, we will use the addition rule and take $\mathcal{M}(xy) + \mathcal{M}(y^{2}):$ 
-First, compute $\mathcal{M}(xy)$ using the multiplication rule: \\
+\end{bmatrix}$, we will first take $xy\mathcal{A} + y^{2}\mathcal{A}:$ 
+First, compute $xy\mathcal{A}$ using the multiplication rule: \\
 $$x\begin{bmatrix}
  0&1 \\ 
  1&0 
@@ -179,11 +181,11 @@ $$y\begin{bmatrix}
  1&0 
 \end{bmatrix} = 1x + 0y = x$$
 
-to get  $\mathcal{M}(xy) = (y*x)$ mod $2 = xy$. \\
+to get  $xy\mathcal{A} = (y*x)$ mod $2 = xy$. \\
 
-Next, compute $\mathcal{M}(y^{2})$ using the multiplication rule: \\
-We know that $\mathcal{M}(y) = x$, so we can multiply $(x*x)$ mod $2 = y^{2}$. 
-Thus, we combine our results of $\mathcal{M}(xy) + \mathcal{M}(y^{2})$ with the addition rule to get $\mathcal{M}(xy + y^{2}) = x^{2} + xy$. 
+Next, compute $y^{2}\mathcal{A}$: \\
+We know that $y\mathcal{A} = x$, so we can multiply $(x*x)$ mod $2 = y^{2}$. 
+Thus, we combine our results of $xy\mathcal{A} + y^{2}\mathcal{A}$ with the addition rule to get $(xy + y^{2})\mathcal{A} = x^{2} + xy$. 
 
 \end{exm}
 
@@ -195,7 +197,7 @@ Apply the matrices in $SL_{2}$ mod $2$ to the polynomials in $R[x,y]_{2}$
 We demonstrate the process with $\begin{bmatrix}
  0&1 \\ 
  1&0 
-\end{bmatrix} $, mapping $p \mapsto \mathcal{M}(p)$ for $p$ $\epsilon$ $R[x,y]_{2}$: \\
+\end{bmatrix} $, mapping $p \mapsto p\mathcal{A}$ for $p \epsilon$ $R[x,y]_{2}$: \\
 
 %% TODO how to align
 \begin{center}
@@ -209,11 +211,11 @@ $xy + x^{2} \rightarrow xy + y^{2}$, \\
 $xy + x^{2} + y^{2} \rightarrow xy + x^{2} + y^{2}$
 \end{center}
 
-Performing this on the rest of the matrices in $SL_{2}$ mod $n$ are left as an exercise to the reader.
+Performing this on the rest of the matrices in $SL_{2}$ mod $n$ are omitted.
 
 \end{exm}
 
-If one continues applying $\mathcal{M}$ to $R[x,y]_{2}$ using the rest of the matrices in $SL_{2}$ mod $2$, we see that two polynomials in $R[x,y]_{2}$ are always mapped to themselves: 0 and $x^{2} + xy + y^{2}$. Upon closer inspection, the groups \textbf{TODO which groups} always map to each other. We call these groupings \textit{\textbf{orbits}}. 
+If one continues applying $\mathcal{A}$ to $R[x,y]_{2}$ using the rest of the matrices in $SL_{2}$ mod $2$, we see that two polynomials in $R[x,y]_{2}$ are always mapped to themselves: 0 and $x^{2} + xy + y^{2}$. Upon closer inspection, the terms fall into three groups: $\{0\}, \{x^{2}, y^{2}, x^{2} + y^{2}\}$ and $\{x^{2} + xy + y^{2}\}$. The terms within each group always map to each other. We call these groupings \textit{\textbf{orbits}}. 
 
 \section{Irreducible Polynomial Sets}
 To further understand the properties of these polynomial sets, we introduce the notion of irreducibility. 
@@ -223,8 +225,18 @@ $R[x,y]_{k}$ = $\underline{k+1}$
 \end{dfn} 
 What does it mean for such a set to be irreducible? 
 \begin{dfn}
-For a set  $\underline{w}$ of the form $R[x,y]_{w+1}$ to be irreducible, \textbf{TODO} better definition of irreducible
+A set $\underline{k}$ of the form $R[x,y]_{k-1}$ is irreducible if the only $SL_{2}(R)$ submodules are  $\underline{k}$ and $\{0\}$. 
 \end{dfn} 
+
+\begin{dfn}
+$U$ $\subset$ $R$ is a  $SL_{2}(R)$ submodule of $\underline{k}$ if the following two criteria hold: 
+
+\begin{enumerate}
+  \item $p  \mathcal{A} \epsilon U$ for $p$ $\epsilon$ $U$ and $\mathcal{A} \epsilon$ $SL_{2}(R)$ 
+  \item $rp + sq$ $\epsilon$ $U$ for $r, s$ $\epsilon$ $R$; $p, q$ $\epsilon$ $U$
+\end{enumerate}
+
+\end{dfn}
 Therefore, $R[x,y]_{2}$ = $\underline{1}$, $R[x,y]_{3}$ = $\underline{2}$, etc. Using this new notation, we can then illustrate an example of polynomial set irreducibility. 
 
 \begin{exm}
