@@ -46,7 +46,7 @@ Cleveland, OH\\
 
 
 \begin{abstract}
-TODO: Once I write the paper, come up with an abstract to fit it. Matrices and polynomials and stuff. 
+Using a matrix action $\mathcal{A}$, matrices in the group $SL_{2}$ mod $n$ can act on polynomials $R[x,y]_{k}$. We find that $R[x,y]_{k}$ is closed under the matrix action, and that the mappings from a polynomial $p \epsilon R[x,y]_{k}$ to  $p\mathcal{A}$ lay the foundation for patterns in $SL_{2}$ mod $n$ and $R[x,y]_{k}$ and reveal a link between the two sets that allows one to predict behavior as $n$ and $k$ approach infinity.
 \end{abstract}
 
 \maketitle
@@ -97,17 +97,8 @@ Let $R[x,y]$ be the ring of polynomials in two variables, x and y, with coeffici
 \end{dfn}
 For now, we will consider $R$ to be positive integers mod 2. That is, $R = \mathbb{Z}/2$. To construct $R[x,y]_{k}$, take $(x+y)^{k}$ and take the coefficients mod $n$.
 
-\begin{prop}The number of elements in $R[x,y]_{k}$ is equal to $n^{k + 1}$, where $r$ is the number of elements in $R$. 
-\end{prop}
-
-\begin{proof}
-We prove the proposition by induction: \\
-\textbf{Inductive hypothesis: } TODO Actually do the proof on paper first. \\
-\textbf{Basis step: } TODO \\
-\textbf{Inductive step:} TODO \\
-
-Therefore, the number of elements in $R[x,y]_{k}$is equal to $r^{k + 1}$. 
-\end{proof}
+Note that the number of elements in $R[x,y]_{k}$ is equal to $n^{k + 1}$. This is because for each polynomial, there are $n$ options for each coefficient and k + 1 terms.
+ 
 To further illustrate these concepts, take the example below. 
 \begin{exm}
 \textbf{TODO} this might be a little confusing, too. 
@@ -199,7 +190,6 @@ We demonstrate the process with $\begin{bmatrix}
  1&0 
 \end{bmatrix} $, mapping $p \mapsto p\mathcal{A}$ for $p \epsilon$ $R[x,y]_{2}$: \\
 
-%% TODO how to align
 \begin{center}
 $0 \rightarrow 0$, \\
 $y^{2} \rightarrow x^{2}$, \\
@@ -239,8 +229,10 @@ $U$ $\subset$ $R$ is a  $SL_{2}(R)$ submodule of $\underline{k}$ if the followin
 \end{dfn}
 Therefore, $R[x,y]_{2}$ = $\underline{1}$, $R[x,y]_{3}$ = $\underline{2}$, etc. Using this new notation, we can then illustrate an example of polynomial set irreducibility. 
 
+Note that \textbf{TODO: Thing about the two matrices S and T}. 
+
 \begin{exm}
-In  $SL_{2}$ mod $2$, $\underline{1}$ and $\underline{2}$ are irreducible. We show this by
+In  $SL_{2}$ mod $2$, $\underline{1}$ and $\underline{2}$ are irreducible. We show this by checking them on S and T. 
 \textbf{TODO} work out this example
 \end{exm}
 
@@ -282,19 +274,17 @@ As $k$ grows, we can see a pattern begin to emerge. We can examine our findings 
 \end{table}
 
 \subsection{Irreducibles in $SL_{2}$ mod $3$}
-\textbf{TODO} Give a few examples, show the pattern and do a proof of some sort
+We can show that terms $\underline{1}, \underline{2}$ and $\underline{3}$ are irreducible in $SL_{2}$ mod $3$. In $SL_{2}$ mod $3$, we know that orbits \textbf{TODO: list orbits} exist. We know that $\underline{1}$ is irreducible because \textbf{TODO}. $\underline{2}$ is \textbf{TODO}. $\underline{3}$ is irreducible because \textbf{TODO}.
 
 \subsection{Irreducible behavior in $SL_{2}$ mod $n$}
-\textbf{TODO} Make a generalization
+We have noticed that for the cases of $SL_{2}$ mod $n$ for $n = 2$ and $n = 3$, the sets $\underline{1}$, ..., $\underline{n}$ are irreducible. We posit that this is true for any $n$. 
 \begin{prop}
- In $SL_{2}$ mod $n$, terms $\underline{1}$, ..., $\underline{n}$ are irreducible. 
+ In $SL_{2}$ mod $n$, sets $\underline{1}$, ..., $\underline{n}$ are irreducible. 
 \end{prop}
-\begin{proof}
-{TODO} Prove it!
-\end{proof}
+\textbf{TODO: How can we show this?}
 
 \section{Conclusion}
-{TODO} Wrap it up
+When matrices in $SL_{2}$ mod $n$ can act on polynomials $R[x,y]_{k}$, patterns begin to emerge. When one examines polynomials of lower orders, distinctive mappings called orbits begin to appear. As the order increases, we find that polynomial sets contain copies of lower order sets.  In fact, $SL_{2}$ mod $n$, sets $\underline{1}$, ..., $\underline{n}$ are irreducible. We find that it is possible to find how many copies of the irreducibile sets each higher order set can be decomposed into and to discern what will happen as $k$ approaches infinity.
 \bibliographystyle{amsplain}
 %% Add bibliography if applicable
 
