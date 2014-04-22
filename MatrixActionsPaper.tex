@@ -101,9 +101,7 @@ Note that the number of elements in $R[x,y]_{k}$ is equal to $n^{k + 1}$. This i
  
 To further illustrate these concepts, take the example below. 
 \begin{exm}
-\textbf{TODO} this might be a little confusing, too. 
-Let $R = \mathbb{Z}/2$.  Let $n = 2$. Our goal is to generate $R[x,y]_{2}$, so we begin by expanding $(x + y)^{2}$. 
-$$(x + y)^{2} = x^{2} + 2xy + y^{2} $$
+Let $R = \mathbb{Z}/2$.  Let $n = 2$. Our goal is to generate $R[x,y]_{2}$, so we begin by expanding $(x + y)^{2}$ mod $2$. 
 This gives us an equation of the form $a*x^{2} + b*xy + c*y^{2} $
 
 Next, we form all combinations of this equation by plugging the elements of $R$ into $a, b$, and $c$: 
@@ -229,7 +227,14 @@ $U$ $\subset$ $R$ is a  $SL_{2}(R)$ submodule of $\underline{k}$ if the followin
 \end{dfn}
 Therefore, $R[x,y]_{2}$ = $\underline{1}$, $R[x,y]_{3}$ = $\underline{2}$, etc. Using this new notation, we can then illustrate an example of polynomial set irreducibility. 
 
-Note that \textbf{TODO: Thing about the two matrices S and T}. 
+Note that in $SL_{2}$ mod $2$, there are two matrices which can generate the entire set by operating on each other, which we will call $S$ and $T$. In this case, $S$ = 
+$\begin{bmatrix}
+ 0&1 \\ 
+ 1&0 
+\end{bmatrix}$ and $T$ = $\begin{bmatrix}
+ 1&1 \\ 
+ 0&1 
+\end{bmatrix}$. The reader is encouraged to verify that operations between these two matrices can generate the entirity of $SL_{2}$ mod $2$. Consequently, these generator matrices are all that are required to test irreducibility because the rest of the group can be derived from them. 
 
 \begin{exm}
 In  $SL_{2}$ mod $2$, $\underline{1}$ and $\underline{2}$ are irreducible. We show this by checking them on S and T. 
@@ -237,8 +242,7 @@ In  $SL_{2}$ mod $2$, $\underline{1}$ and $\underline{2}$ are irreducible. We sh
 \end{exm}
 
 \subsection{Reducible Polynomial Sets}
-We have shown that there exist irreducible polynomial sets such as $\underline{1}$ and $\underline{2}$ in  $SL_{2}$ mod $2$. However, we can also illustrate that sets of higher degree can be condensed to irreducibles. 
-\textbf{TODO} Please do go on
+We have shown that there exist irreducible polynomial sets such as $\underline{1}$ and $\underline{2}$ in  $SL_{2}$ mod $2$. However, we can also illustrate that sets of higher degree can be condensed to irreducibles. If one looks hard enough, there are "copies" of $\underline{1}$ and $\underline{2}$ in $\underline{3}$, $\underline{4}$, and beyond. The best way to illustrate what this means is by example: 
 \begin{exm}
 In  $SL_{2}$ mod $2$, we can find $\underline{1}$ and $\underline{2}$ within $\underline{3}$. 
 \textbf{TODO} work out this example
@@ -246,10 +250,9 @@ In  $SL_{2}$ mod $2$, we can find $\underline{1}$ and $\underline{2}$ within $\u
 Therefore, we write that $\underline{3} \cong \underline{1} \bigoplus \underline{2}$. 
 \end{exm}
 
-We can continue the search in polynomial sets of a higher order. 
-\textbf{TODO} do that
+What about $\underline{4}$? \textbf{TODO: Yeah, what about it?}. 
 
-\subsection{Generalization of irreducible behavior in $SL_{2}$ mod $2$ }
+\subsection{Generalization of irreducible behavior in $SL_{2}$ mod $2$}
 In the examples, it is clear that $\underline{1}$ and $\underline{2}$ are irreducible within $SL_{2}$ mod $2$. We have observed that in polynomial sets of higher powers, then we can find copies of $\underline{1}$ and $\underline{2}$ within each of them; therefore, such sets of higher powers are reducible under $SL_{2}$ mod $2$ . 
 
 Observe that for an arbitrary set $\underline{k}$ under $SL_{2}$ mod $2$, the values of the copies it contains add up to $k$. For example, we show above that $\underline{3} \cong \underline{1} \bigoplus \underline{2}$. Note that 1 + 2 = 3. 
@@ -274,7 +277,7 @@ As $k$ grows, we can see a pattern begin to emerge. We can examine our findings 
 \end{table}
 
 \subsection{Irreducibles in $SL_{2}$ mod $3$}
-We can show that terms $\underline{1}, \underline{2}$ and $\underline{3}$ are irreducible in $SL_{2}$ mod $3$. In $SL_{2}$ mod $3$, we know that orbits \textbf{TODO: list orbits} exist. We know that $\underline{1}$ is irreducible because \textbf{TODO}. $\underline{2}$ is \textbf{TODO}. $\underline{3}$ is irreducible because \textbf{TODO}.
+We can easily find the irreducible terms in $SL_{2}$ mod $3$. By applying the matrix action to all of the polynomials in  $R[x,y]_{3}$, see that the orbits \textbf{TODO: list orbits} exist. By the same argument used in $SL_{2}$ mod $2$, $\underline{1}, \underline{2}$ and $\underline{3}$ are irreducible. 
 
 \subsection{Irreducible behavior in $SL_{2}$ mod $n$}
 We have noticed that for the cases of $SL_{2}$ mod $n$ for $n = 2$ and $n = 3$, the sets $\underline{1}$, ..., $\underline{n}$ are irreducible. We posit that this is true for any $n$. 
