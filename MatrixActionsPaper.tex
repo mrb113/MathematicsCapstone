@@ -46,7 +46,7 @@ Cleveland, OH\\
 
 
 \begin{abstract}
-Using a matrix action $\mathcal{A}$, matrices in the group $SL_{2}$ mod $n$ can act on polynomials $R[x,y]_{k}$. We find that $R[x,y]_{k}$ is closed under the matrix action, and that the mappings from a polynomial $p \epsilon R[x,y]_{k}$ to  $p\mathcal{A}$ lay the foundation for patterns in $SL_{2}$ mod $n$ and $R[x,y]_{k}$ and reveal a link between the two sets that allows one to predict behavior as $n$ and $k$ approach infinity.
+Using a matrix action, matrices in the group $SL_{2}$ mod $n$ can act on homogenous polynomials in two variables. We find homogenous (bivariate) polynomials of any given degree are closed under the matrix action, and that the mappings from a polynomial $p \epsilon R[x,y]_{k}$ to  $p\mathcal{A}$ lay the foundation for certain patterns that we describe. 
 \end{abstract}
 
 \maketitle
@@ -91,20 +91,20 @@ $$
 
 \subsection{Polynomials with coefficients mod n}
 We claim that the matrices in $SL_{2}$ mod $n$ can act on polynomials. To do that, we must define a specific set of polynomials to work with. 
-We thus define the set of polynomials that the matrices: 
+We thus define the set of polynomials that the matrices act on: 
 \begin{dfn}
-Let $R[x,y]$ be the ring of polynomials in two variables, x and y, with coefficients in $R = \mathbb{Z}/n\mathbb{Z}$. An element of $R[x,y]$ of the form  $ax^{my^{n}}$, with $a$ in $R$, is called a monomial. Define the degree of the monomial $ax^{my^{n}}$ to be $m+n$. Say that an element $p$ in $R[x,y]$ is homogeneous if p is a sum of monomials all of the same degree. (Say that 0 is homogeneous of every degree, since $0=0x^{my^{n}}$ for all m and n.) Write $R[x,y]_{k}$ for the set of polynomials in $R[x,y]$ that are homogeneous of degree $k$.
+Let $R[x,y]$ be the ring of polynomials in two variables, x and y, with coefficients in $R = \mathbb{Z}/n\mathbb{Z}$. An element of $R[x,y]$ of the form  $ax^{m}y^{n}$, with $a$ in $R$, is called a monomial. Define the degree of the monomial $ax^{m}y^{n}$ to be $m+n$. Say that an element $p$ in $R[x,y]$ is homogeneous if p is a sum of monomials all of the same degree. (Say that 0 is homogeneous of every degree, since $0=0x^{m}y^{n}$ for all m and n.) Write $R[x,y]_{k}$ for the set of polynomials in $R[x,y]$ that are homogeneous of degree $k$.
 \end{dfn}
-For now, we will consider $R$ to be positive integers mod 2. That is, $R = \mathbb{Z}/2$. To construct $R[x,y]_{k}$, take $(x+y)^{k}$ and take the coefficients mod $n$.
+For now, we will consider $R$ to be positive integers mod 2. That is, $R = \mathbb{Z}/2$. The monomials of degree $k$ in $R[x,y]$ are $x^k, x^{k-1}y, \cdots, xy^{k-1}, y$.These monomials span $R[x,y]_{k}$ as an R-module. This means that any element of $R[x,y]_{k}$ can be written as $\sum_{j=0}^k a_jx^{k-j}y^j$ for some $a_{j}$ in $R$. 
 
 Note that the number of elements in $R[x,y]_{k}$ is equal to $n^{k + 1}$. This is because for each polynomial, there are $n$ options for each coefficient and k + 1 terms.
  
 To further illustrate these concepts, take the example below. 
 \begin{exm}
-Let $R = \mathbb{Z}/2$.  Let $n = 2$. Our goal is to generate $R[x,y]_{2}$, so we begin by expanding $(x + y)^{2}$ mod $2$. 
-This gives us an equation of the form $a*x^{2} + b*xy + c*y^{2} $
+Let $R = \mathbb{Z}/2$.  Let $n = 2$. Our goal is to generate $R[x,y]_{2}$. 
+According to the above, every element in $R[x,y]_{2}$ has the form $a*x^{2} + b*xy + c*y^{2}$ for some $a, b, c$ $\epsilon$  $R$.
 
-Next, we form all combinations of this equation by plugging the elements of $R$ into $a, b$, and $c$: 
+We form all combinations of this equation by plugging the elements of $R$ into $a, b$, and $c$: 
 \begin{align*}
 0x^{2} + 0xy + 0y^{2} &= 0 \\
 1x^{2} + 0xy + 0y^{2} &= x^{2} \\
@@ -250,10 +250,12 @@ In  $SL_{2}$ mod $2$, we can find $\underline{1}$ and $\underline{2}$ within $\u
 Therefore, we write that $\underline{3} \cong \underline{1} \bigoplus \underline{2}$. 
 \end{exm}
 
-What about $\underline{4}$? \textbf{TODO: Yeah, what about it?}. 
+What about $\underline{4}$? \textbf{TODO: Yeah, what about it?}. Therefore, $\underline{4}$ contains two copies of $\underline{1}$ and one copy of $\underline{2}$. 
+
+We can continue this process for the rest of $R[x,y]_{k}$. 
 
 \subsection{Generalization of irreducible behavior in $SL_{2}$ mod $2$}
-In the examples, it is clear that $\underline{1}$ and $\underline{2}$ are irreducible within $SL_{2}$ mod $2$. We have observed that in polynomial sets of higher powers, then we can find copies of $\underline{1}$ and $\underline{2}$ within each of them; therefore, such sets of higher powers are reducible under $SL_{2}$ mod $2$ . 
+In the examples, it is clear that $\underline{1}$ and $\underline{2}$ are irreducible within $SL_{2}$ mod $2$. We have observed that in polynomial sets in $R[x,y]_{k}$  of higher powers (greater values of $k$), then we can find copies of $\underline{1}$ and $\underline{2}$ within each of them. Therefore, such sets of higher powers are reducible under $SL_{2}$ mod $2$ . 
 
 Observe that for an arbitrary set $\underline{k}$ under $SL_{2}$ mod $2$, the values of the copies it contains add up to $k$. For example, we show above that $\underline{3} \cong \underline{1} \bigoplus \underline{2}$. Note that 1 + 2 = 3. 
 
