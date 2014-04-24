@@ -46,7 +46,7 @@ Cleveland, OH\\
 
 
 \begin{abstract}
-Using a matrix action, matrices in the group $SL_{2}$ mod $n$ can act on homogenous polynomials in two variables. We find homogenous (bivariate) polynomials of any given degree are closed under the matrix action, and that the mappings from a polynomial $p \epsilon R[x,y]_{k}$ to  $p\mathcal{A}$ lay the foundation for certain patterns that we describe. 
+Using a matrix action, matrices in the group $SL_{2}$ mod $n$ can act on homogenous polynomials in two variables. We find homogenous (bivariate) polynomials of any given degree are closed under the matrix action, and that the mappings from a polynomial $p \in R[x,y]_{k}$ to  $p\mathcal{A}$ lay the foundation for certain patterns that we describe. 
 \end{abstract}
 
 \maketitle
@@ -102,7 +102,7 @@ Note that the number of elements in $R[x,y]_{k}$ is equal to $n^{k + 1}$. This i
 To further illustrate these concepts, take the example below. 
 \begin{exm}
 Let $R = \mathbb{Z}/2$.  Let $n = 2$. Our goal is to generate $R[x,y]_{2}$. 
-According to the above, every element in $R[x,y]_{2}$ has the form $a*x^{2} + b*xy + c*y^{2}$ for some $a, b, c$ $\epsilon$  $R$.
+According to the above, every element in $R[x,y]_{2}$ has the form $a*x^{2} + b*xy + c*y^{2}$ for some $a, b, c$ $\in$  $R$.
 
 We form all combinations of this equation by plugging the elements of $R$ into $a, b$, and $c$: 
 \begin{align*}
@@ -139,7 +139,7 @@ $$
 
 However, most of the polynomials we are working with are more complex than simply $x$ and $y$. Therefore, we need to establish how to use the matrix action $\mathcal{A}$ on more complicated polynomials. 
 \begin{dfn}
-For $p, q$ $\epsilon$ $R[x,y]$ and $r$ $\epsilon$ $R$, require: 
+For $p, q$ $\in$ $R[x,y]$ and $r$ $\in$ $R$, require: 
 \begin{enumerate}
 \item $(p+q)\mathcal{A} = p\mathcal{A} + q\mathcal{A}$
 \item $pq\mathcal{A} = (p\mathcal{A})(q\mathcal{A}$
@@ -186,7 +186,7 @@ Apply the matrices in $SL_{2}$ mod $2$ to the polynomials in $R[x,y]_{2}$
 We demonstrate the process with $\begin{bmatrix}
  0&1 \\ 
  1&0 
-\end{bmatrix} $, mapping $p \mapsto p\mathcal{A}$ for $p$ $\epsilon$ $R[x,y]_{2}$: \\
+\end{bmatrix} $, mapping $p \mapsto p\mathcal{A}$ for $p$ $\in$ $R[x,y]_{2}$: \\
 
 \begin{center}
 $0 \rightarrow 0$, \\
@@ -220,8 +220,8 @@ A set $\underline{k}$ of the form $R[x,y]_{k-1}$ is irreducible if the only $SL_
 $U$ $\subset$ $R$ is a  $SL_{2}(R)$ submodule of $\underline{k}$ if the following two criteria hold: 
 
 \begin{enumerate}
-  \item $p  \mathcal{A}$ $\epsilon U$ for $p$ $\epsilon$ $U$ and $\mathcal{A}$ $\epsilon$ $SL_{2}(R)$ 
-  \item $rp + sq$ $\epsilon$ $U$ for $r, s$ $\epsilon$ $R$; $p, q$ $\epsilon$ $U$
+  \item $p  \mathcal{A}$ $\in U$ for $p$ $\in$ $U$ and $\mathcal{A}$ $\in$ $SL_{2}(R)$ 
+  \item $rp + sq$ $\in$ $U$ for $r, s$ $\in$ $R$; $p, q$ $\in$ $U$
 \end{enumerate}
 
 \end{dfn}
@@ -237,26 +237,17 @@ $\begin{bmatrix}
 \end{bmatrix}$. The reader is encouraged to verify that operations between these two matrices can generate the entirity of $SL_{2}$ mod $2$. Consequently, these generator matrices are all that are required to test irreducibility because the rest of the group can be derived from them. 
 
 \begin{exm}
-In  $SL_{2}$ mod $2$, $\underline{1}$ and $\underline{2}$ are irreducible. We show this by checking them on $S$ and $T$. 
-$\underline{1}$ = $\{x, 1\}$\\  Apply $\mathcal{A}$ to each of the elements. Using $S$: 
+In  $SL_{2}$ mod $2$, $\underline{1}$ and $\underline{2}$ are irreducible.
+To show that a set is irreducible, we need to show that the only submodules they contain is \{0\} and itself. \\
 
-$$\textbf{TODO I just realized I don't entirely understand how this works on constants}. $$
+$\textbf{\underline{1}}$ = \{0, 1\}: 0 and \underline{1} are the trivial submodules. We will show that they are the only submodules by contradiction: Assume that \{1\} is a submodule. Take $0 \cdot 1$. By the definition of \textbf{TODO}, this should generate an element of \{1\}. However, $ 0 \cdot 1 = 0$. $0 \not\in \{1\}$. Contradiction! Therefore, the only submodules of $\underline{1}$ are \{0\} and itself. \underline{1} is hence irreducible. \qed \\
 
-Using $T$: 
-$$\textbf{TODO}$$
+$\textbf{\underline{2}}$ = \{0, x, x + y, y\}. Once again, we need to show that the only two submodules are the trivial submodules, \{0\} and \underline{2}. Choose $V < \underline{2}$. If $x \in V$, then we know that $(x + y) \in V$ because $x\mathcal{T}$ = $(x + y)$. We also know that $y \in V$ because $x\mathcal{S} = y$. One can repeat this argument by beginning with $(x + y)$ and $y$ instead of with $x$, so $V$ must be equal to $\underline{2}$. Therefore, we conclude that the only submodules are \{0\} and $\underline{2}$. \qed
 
-Repeat the process for $\underline{2}$. Recall that $\underline{2}$ = $\{x, x + y, y\}$. Again, we apply $\mathcal{A}$ to each of the elements. Using $S$: 
-$$
-\textbf{TODO}
-$$
-Using $T$: 
-$$
-\textbf{TODO}
-$$
 \end{exm}
 
 \subsection{Reducible Polynomial Sets}
-We have shown that there exist irreducible polynomial sets such as $\underline{1}$ and $\underline{2}$ in  $SL_{2}$ mod $2$. However, we can also illustrate that sets of higher degree can be condensed to irreducibles. If one looks hard enough, there are "copies" of $\underline{1}$ and $\underline{2}$ in $\underline{3}$, $\underline{4}$, and beyond. The best way to illustrate what this means is by example: 
+We have shown that there exist irreducible polynomial sets such as $\underline{1}$ and $\underline{2}$ in  $SL_{2}$ mod $2$. However, we can also illustrate that sets of higher degree can be condensed to irreducibles. If one looks closely enough, there are "copies" of $\underline{1}$ and $\underline{2}$ in $\underline{3}$, $\underline{4}$, and beyond. The best way to illustrate what this means is by example: 
 \begin{exm}
 
 In  $SL_{2}$ mod $2$, we can find $\underline{1}$ and $\underline{2}$ within $\underline{3}$. 
