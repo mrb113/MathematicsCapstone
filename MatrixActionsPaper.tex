@@ -123,7 +123,7 @@ Since  $R = \mathbb{Z}/2$, $r$ = 2. By the argument in Proposition 1.1, we can v
 So far, we have constructed special linear groups of matrices and sets of polynomials with coefficients mod n. This section details how the matrices in $SL_{2}$ mod $n$ can act on polynomials in $R[x,y]_{k}$. 
 
 \subsection{Preliminaries}
-For a polynomial in $R[x,y]_{k}$and a matrix in $SL_{2}$ mod $n$, the matrix acts on the polynomial according to the following rule, $\mathcal{A}$: 
+For a polynomial in $R[x,y]_{k}$ and a matrix in $SL_{2}$ mod $n$, the matrix acts on the polynomial according to the following rule, $\mathcal{A}$: 
 $$
 x\begin{bmatrix}
  a&b \\ 
@@ -139,7 +139,7 @@ $$
 
 However, most of the polynomials we are working with are more complex than simply $x$ and $y$. Therefore, we need to establish how to use the matrix action $\mathcal{A}$ on more complicated polynomials. 
 \begin{dfn}
-For $p, q \epsilon R[x,y]$ and $r \epsilon R$, require: 
+For $p, q$ $\epsilon$ $R[x,y]$ and $r$ $\epsilon$ $R$, require: 
 \begin{enumerate}
 \item $(p+q)\mathcal{A} = p\mathcal{A} + q\mathcal{A}$
 \item $pq\mathcal{A} = (p\mathcal{A})(q\mathcal{A}$
@@ -186,7 +186,7 @@ Apply the matrices in $SL_{2}$ mod $2$ to the polynomials in $R[x,y]_{2}$
 We demonstrate the process with $\begin{bmatrix}
  0&1 \\ 
  1&0 
-\end{bmatrix} $, mapping $p \mapsto p\mathcal{A}$ for $p \epsilon$ $R[x,y]_{2}$: \\
+\end{bmatrix} $, mapping $p \mapsto p\mathcal{A}$ for $p$ $\epsilon$ $R[x,y]_{2}$: \\
 
 \begin{center}
 $0 \rightarrow 0$, \\
@@ -220,12 +220,12 @@ A set $\underline{k}$ of the form $R[x,y]_{k-1}$ is irreducible if the only $SL_
 $U$ $\subset$ $R$ is a  $SL_{2}(R)$ submodule of $\underline{k}$ if the following two criteria hold: 
 
 \begin{enumerate}
-  \item $p  \mathcal{A} \epsilon U$ for $p$ $\epsilon$ $U$ and $\mathcal{A} \epsilon$ $SL_{2}(R)$ 
+  \item $p  \mathcal{A}$ $\epsilon U$ for $p$ $\epsilon$ $U$ and $\mathcal{A}$ $\epsilon$ $SL_{2}(R)$ 
   \item $rp + sq$ $\epsilon$ $U$ for $r, s$ $\epsilon$ $R$; $p, q$ $\epsilon$ $U$
 \end{enumerate}
 
 \end{dfn}
-Therefore, $R[x,y]_{2}$ = $\underline{1}$, $R[x,y]_{3}$ = $\underline{2}$, etc. Using this new notation, we can then illustrate an example of polynomial set irreducibility. 
+Therefore, $R[x,y]_{0}$ = $\underline{1}$, $R[x,y]_{1}$ = $\underline{2}$, etc. Using this new notation, we can then illustrate an example of polynomial set irreducibility. 
 
 Note that in $SL_{2}$ mod $2$, there are two matrices which can generate the entire set by operating on each other, which we will call $S$ and $T$. In this case, $S$ = 
 $\begin{bmatrix}
@@ -237,20 +237,35 @@ $\begin{bmatrix}
 \end{bmatrix}$. The reader is encouraged to verify that operations between these two matrices can generate the entirity of $SL_{2}$ mod $2$. Consequently, these generator matrices are all that are required to test irreducibility because the rest of the group can be derived from them. 
 
 \begin{exm}
-In  $SL_{2}$ mod $2$, $\underline{1}$ and $\underline{2}$ are irreducible. We show this by checking them on S and T. 
-\textbf{TODO} work out this example
+In  $SL_{2}$ mod $2$, $\underline{1}$ and $\underline{2}$ are irreducible. We show this by checking them on $S$ and $T$. 
+$\underline{1}$ = $\{x, 1\}$\\  Apply $\mathcal{A}$ to each of the elements. Using $S$: 
+
+$$\textbf{TODO I just realized I don't entirely understand how this works on constants}. $$
+
+Using $T$: 
+$$\textbf{TODO}$$
+
+Repeat the process for $\underline{2}$. Recall that $\underline{2}$ = $\{x, x + y, y\}$. Again, we apply $\mathcal{A}$ to each of the elements. Using $S$: 
+$$
+\textbf{TODO}
+$$
+Using $T$: 
+$$
+\textbf{TODO}
+$$
 \end{exm}
 
 \subsection{Reducible Polynomial Sets}
 We have shown that there exist irreducible polynomial sets such as $\underline{1}$ and $\underline{2}$ in  $SL_{2}$ mod $2$. However, we can also illustrate that sets of higher degree can be condensed to irreducibles. If one looks hard enough, there are "copies" of $\underline{1}$ and $\underline{2}$ in $\underline{3}$, $\underline{4}$, and beyond. The best way to illustrate what this means is by example: 
 \begin{exm}
+
 In  $SL_{2}$ mod $2$, we can find $\underline{1}$ and $\underline{2}$ within $\underline{3}$. 
 \textbf{TODO} work out this example
 
 Therefore, we write that $\underline{3} \cong \underline{1} \bigoplus \underline{2}$. 
 \end{exm}
 
-What about $\underline{4}$? \textbf{TODO: Yeah, what about it?}. Therefore, $\underline{4}$ contains two copies of $\underline{1}$ and one copy of $\underline{2}$. 
+By the same argument, one can verify that $\underline{4}$ contains two copies of $\underline{1}$ and one copy of $\underline{2}$. 
 
 We can continue this process for the rest of $R[x,y]_{k}$. 
 
@@ -261,7 +276,7 @@ Observe that for an arbitrary set $\underline{k}$ under $SL_{2}$ mod $2$, the va
 
 As $k$ grows, we can see a pattern begin to emerge. We can examine our findings so far by arranging them in a table. 
 
-\begin{table}
+\begin{table}[h]
     \begin{tabular}{|c|c|c|} 
 	\hline
     Polynomial set & \# of $\underline{1}$ & \# of $\underline{2}$ \\ \hline
@@ -276,7 +291,42 @@ As $k$ grows, we can see a pattern begin to emerge. We can examine our findings 
     $\underline{9}$ & 3 & 3 \\ \hline
     \end{tabular} \\
 \begin{centering}$\vdots$\end{centering}
+\end{table} 
+
+In $SL_{2}$ mod $2$, to determine row $\underline{h}$'s contents, there is the following formula. Note that there is a pattern in the table periodic every three rows. Therefore, there are three different cases for each row within the pattern.
+\begin{prop}
+To determine row $h$'s contents, first take $h$ mod 3. \\
+Case 1: $h$ mod $3 = 0$. Row contains: 
+\begin{table}[h]
+\centering
+    \begin{tabular}{|l|l|}
+    \hline
+    \# of $\underline{1}$ & \# of $\underline{2}$ \\ \hline
+    $h/3$     & $h/3$     \\ \hline
+    \end{tabular}
 \end{table}
+
+Case 2: $h$ mod $3 = 1$. Row contains: 
+\begin{table}[h]
+\centering
+    \begin{tabular}{|l|l|}
+    \hline
+    \# of $\underline{1}$ & \# of $\underline{2}$ \\ \hline
+    $(h/3) + 1$     & $h/3$     \\ \hline
+    \end{tabular}
+\end{table}
+
+Case 3: $h$ mod $3 = 2$. Row contains: 
+\begin{table}[h]
+\centering
+    \begin{tabular}{|l|l|}
+    \hline
+    \# of $\underline{1}$ & \# of $\underline{2}$ \\ \hline
+    $h/3$     & $(h/3) + 1$     \\ \hline
+    \end{tabular}
+\end{table}
+
+\end{prop}
 
 \subsection{Irreducibles in $SL_{2}$ mod $3$}
 We can easily find the irreducible terms in $SL_{2}$ mod $3$. By applying the matrix action to all of the polynomials in  $R[x,y]_{3}$, see that the orbits \textbf{TODO: list orbits} exist. By the same argument used in $SL_{2}$ mod $2$, $\underline{1}, \underline{2}$ and $\underline{3}$ are irreducible. 
