@@ -53,7 +53,7 @@ Using a matrix action, matrices in the group $SL_{2}$ mod $n$ can act on homogen
 
 \section{Mathematical Foundations} 
 
-TODO: I need some sort of introduction here! Math, yo. 
+When matrices and polynomials interact, usually the polynomial acts on the matrix by an operation and changes its entries. However, if we define a matrix action, then the matrix can act on polynomials unchanged. In particular, we will define an action for matrices in special linear groups of degree 2 mod $n$ to act on bivariate polynomials. 
 
 \subsection{Special linear groups of degree 2 mod n}
 Special linear groups are a specific type of group that can be defined over any commutative ring with unity. We are interested in the case where the ring is $\mathbb{Z}/n$, the integers mod $n$. 
@@ -241,7 +241,7 @@ $\begin{bmatrix}
 In  $SL_{2}$ mod $2$, $\underline{1}$ and $\underline{2}$ are irreducible.
 To show that a set is irreducible, we need to show that the only submodules they contain is \{0\} and itself. \\
 
-$\textbf{\underline{1}}$ = \{0, 1\}: 0 and \underline{1} are the trivial submodules. We will show that they are the only submodules by contradiction: Assume that \{1\} is a submodule. Take $0 \cdot 1$. By the definition of \textbf{TODO}, this should generate an element of \{1\}. However, $ 0 \cdot 1 = 0$. $0 \not\in \{1\}$. Contradiction! Therefore, the only submodules of $\underline{1}$ are \{0\} and itself. \underline{1} is hence irreducible. \qed \\
+$\textbf{\underline{1}}$ = \{0, 1\}: 0 and \underline{1} are the trivial submodules. We will show that they are the only submodules by contradiction: Assume that \{1\} is a submodule. Take $0 \cdot 1$. This should generate an element of \{1\}. However, $ 0 \cdot 1 = 0$. $0 \not\in \{1\}$. Contradiction! Therefore, the only submodules of $\underline{1}$ are \{0\} and itself. \underline{1} is hence irreducible. \qed \\
 
 $\textbf{\underline{2}} = \{0, x, x + y, y\}$. Once again, we need to show that the only two submodules are the trivial submodules, \{0\} and \underline{2}. Choose $V < \underline{2}$. If $x \in V$, then we know that $(x + y) \in V$ because $x\mathcal{T}$ = $(x + y)$. We also know that $y \in V$ because $x\mathcal{S} = y$. One can repeat this argument by beginning with $(x + y)$ and $y$ instead of with $x$, so $V$ must be equal to $\underline{2}$. Therefore, we conclude that the only submodules are \{0\} and $\underline{2}$. \qed
 
@@ -353,12 +353,39 @@ Column $\underline{2}$: If $h$ is odd, col($\underline{2}) = 0$. If $h$ is even,
 
 Column $\underline{1}$: col($\underline{1}) = h$ - col($\underline{3})$ - col($\underline{2})$. 
 
+\subsection{Irreducibles in $SL_{2}$ mod $5$}
+We repeat creating the table for the case of $SL_{2}$ mod $5$: 
+\begin{table}[h]
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Polynomial Set & \# of $\underline{1}$ & \# of $\underline{2}$ & \# of $\underline{3}$ & \# of $\underline{4}$ & \# of $\underline{5}$ \\ \hline
+
+$\underline{1}$              & 1       & 0       & 0     & 0  & 0 \\ \hline
+$\underline{2}$              & 0       & 1       & 0     & 0  & 0 \\ \hline
+$\underline{3}$              & 0       & 0       & 1     & 0  & 0  \\ \hline
+$\underline{4}$              & 0       & 0       & 0     & 1  & 0  \\ \hline
+$\underline{5}$              & 0       & 0       & 0     & 0  & 1  \\ \hline
+$\underline{6}$              & 0       & 1       & 0     & 1  & 0   \\ \hline
+$\underline{7}$              & 2       & 0       & 0     & 0  & 1   \\ \hline
+$\underline{8}$              & 0       & 2       & 0     & 1  & 0   \\ \hline
+$\underline{9}$               & 1      & 0       & 1     & 0  & 1   \\ \hline
+$\underline{10}$             & 0       & 1       & 0    & 2  & 0    \\ \hline
+$\underline{11}$             & 1       & 0       & 0    & 0  & 2    \\ \hline
+$\underline{12}$             & 0       & 2       & 0    & 2  & 0    \\ \hline
+$\underline{13}$             & 3       & 0       & 0    & 0  & 2    \\ \hline
+$\underline{14}$             & 0       & 3       & 0    & 2  & 0    \\ \hline
+$\underline{15}$             & 2       & 0       & 1    & 0  & 2    \\ \hline
+\end{tabular} \\
+\begin{centering}$\vdots$\end{centering}
+\end{table}
+
 \subsection{Irreducible behavior in $SL_{2}$ mod $n$}
 We have noticed that for the cases of $SL_{2}$ mod $n$ for $n = 2$ and $n = 3$, the sets $\underline{1}$, ..., $\underline{n}$ are irreducible. We posit that this is true for any $n$. 
 \begin{prop}
  In $SL_{2}$ mod $n$, sets $\underline{1}$, ..., $\underline{n}$ are irreducible. 
 \end{prop}
 
+Thus far in $SL_{2}$ mod $n$ for $n = 2$ and $n = 3$, the table we have drawn has a pattern that is periodic every $n + 1$ rows. This will be true for any value of $n$. 
 \begin{prop}
 $SL_{2}$ mod $n$, the table displaying the number of copies of each irreducible set will have a pattern that has a period of $n + 1$  rows. 
 \end{prop}
