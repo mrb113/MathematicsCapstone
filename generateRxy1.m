@@ -16,4 +16,8 @@ function Rxy1 = generateRxy1(n)
             end
         end
     end
+%     for i = 1:length(Rxy1)
+%         disp(Rxy1(1, i)*x + Rxy1(2, i)*y);
+%     end
+%     disp(length(Rxy1)); 
 end

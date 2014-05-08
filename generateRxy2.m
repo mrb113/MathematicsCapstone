@@ -19,4 +19,9 @@ function Rxy2 = generateRxy2(n)
             end
         end
     end
+    %Optional
+    disp(Rxy2);
+    for i = 1:length(Rxy2)
+        disp(Rxy2(1, i)*x ^2+ Rxy2(2, i)*x*y + Rxy2(3, i)*y^2);
+    end
 end

@@ -21,4 +21,8 @@ function Rxy3 = generateRxy3(n)
             end
         end
     end
+%     for i = 1:length(Rxy3)
+%         disp(Rxy3(1, i)*x ^3+ Rxy3(2, i)*x^2*y + Rxy3(3, i)*x*y^2 + Rxy3(4, i)*y^3); 
+%     end
+%     disp(length(Rxy3)); 
 end

@@ -11,6 +11,10 @@
                        %% (see the end of .log file); unused ones should be removed.
 %% Both of the packages have some limitations---consult package documentations.
 
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
 \theoremstyle{plain}
  \newtheorem{thm}{Theorem}[section]
  \newtheorem{prop}{Proposition}[section]
@@ -29,7 +33,7 @@
 \renewcommand{\setminus}{\smallsetminus}
 \setlength{\textwidth}{28cc} \setlength{\textheight}{42cc}
 
-\title[Matrix Actions]{Matrix Actions on Polynomials}
+\title[Matrix Actions]{Matrix Actions on Bivariate Polynomials}
 
 \author[Bergeron]{\bfseries Michelle Bergeron}
 
@@ -146,16 +150,16 @@ However, most of the polynomials we are working with are more complex than simpl
 For $p, q$ $\in$ $R[x,y]$ and $r$ $\in$ $R$, require: 
 \begin{enumerate}
 \item $(p+q)\mathcal{A} = p\mathcal{A} + q\mathcal{A}$
-\item $pq\mathcal{A} = (p\mathcal{A})(q\mathcal{A}$
+\item $pq\mathcal{A} = (p\mathcal{A})(q\mathcal{A})$
 \item $rp\mathcal{A} = r(p\mathcal{A})$
 \end{enumerate}
 \end{dfn}
 
-\begin{exm}To the matrix 
+\begin{exm}Apply the action using the matrix 
 $\begin{bmatrix}
  0&1 \\ 
  1&0 
-\end{bmatrix}$ in $SL_{2}$ mod $2$ to the polynomial $xy + y^{2}$ in $R[x,y]_{2}$ using $\mathcal{A}.$ \\ 
+\end{bmatrix}$ in $SL_{2}$ mod $2$ to the polynomial $xy + y^{2}$ in $R[x,y]_{2}. $ \\ 
 Begin with using $\begin{bmatrix}
  0&1 \\ 
  1&0 
@@ -290,34 +294,16 @@ As $k$ grows, we can see a pattern begin to emerge. We can examine our findings 
 
 In $SL_{2}$ mod $2$, to determine row $\underline{h}$'s contents, there is the following formula. Note that there is a pattern in the table periodic every three rows. Therefore, there are three different cases for each row within the pattern.
 \begin{prop}
-To determine row $h$'s contents, first take $h$ mod 3. \\
-Case 1: $h$ mod $3 = 0$. Row contains: 
-\begin{table}[h]
-\centering
-    \begin{tabular}{|l|l|}
-    \hline
-    \# of $\underline{1}$ & \# of $\underline{2}$ \\ \hline
-    $h/3$     & $h/3$     \\ \hline
-    \end{tabular}
-\end{table}
+To determine row $\underline{h}$'s contents, first take $h$ mod 3. \\
 
-Case 2: $h$ mod $3 = 1$. Row contains: 
 \begin{table}[h]
 \centering
-    \begin{tabular}{|l|l|}
+    \begin{tabular}{|l|l|l|}
     \hline
-    \# of $\underline{1}$ & \# of $\underline{2}$ \\ \hline
-    $(h/3) + 1$     & $h/3$     \\ \hline
-    \end{tabular}
-\end{table}
-
-Case 3: $h$ mod $3 = 2$. Row contains: 
-\begin{table}[h]
-\centering
-    \begin{tabular}{|l|l|}
-    \hline
-    \# of $\underline{1}$ & \# of $\underline{2}$ \\ \hline
-    $h/3$     & $(h/3) + 1$     \\ \hline
+    $h$ mod $3$ & \# of $\underline{1}$ & \# of $\underline{2}$ \\ \hline
+    $0$ & $h/3$     & $h/3$     \\ \hline
+    $1$ & $\ceil*{h/3}$     & $\floor*{h/3}$     \\ \hline
+    $2$ & $\floor*{h/3}$     & $\ceil*{h/3}$     \\ \hline
     \end{tabular}
 \end{table}
 
@@ -345,13 +331,22 @@ $\underline{10}$             & 0       & 5       & 0       \\ \hline
 \begin{centering}$\vdots$\end{centering}
 \end{table}
 
-One might notice that each of the columns have their own pattern.The formulas for each column of row $h$ are as follows:  
+\begin{prop}
+As in $SL_{2}$ mod $2$, we can define formulas for row $h$.  Take $h$ mod $4$: \\
 
-Column $\underline{3}$: If $h$ is even, col($\underline{3}$) = 0. If $h$ is odd, then col($\underline{3}$) = round($h/4$). 
+\begin{table}[h]
+\centering
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    $h$ mod $4$ & \# of $\underline{1}$ & \# of $\underline{2}$ & \# of $\underline{3}$\\ \hline
+    $0$ & $0$     & $h/2$  & $0$   \\ \hline
+    $1$ & $\ceil*{h/4}$     & $0$  & $\floor*{h/4}$   \\ \hline
+    $2$ & $0$     & $h/2$  & $0$   \\ \hline
+    $3$ & $\floor*{h/4}$     & $0$  & $\ceil*{h/4}$   \\ \hline
+    \end{tabular}
+\end{table}
 
-Column $\underline{2}$: If $h$ is odd, col($\underline{2}) = 0$. If $h$ is even, col($\underline{2}) = h/2$. 
-
-Column $\underline{1}$: col($\underline{1}) = h$ - col($\underline{3})$ - col($\underline{2})$. 
+\end{prop}
 
 \subsection{Irreducibles in $SL_{2}$ mod $5$}
 We repeat creating the table for the case of $SL_{2}$ mod $5$: 
@@ -379,8 +374,28 @@ $\underline{15}$             & 2       & 0       & 1    & 0  & 2    \\ \hline
 \begin{centering}$\vdots$\end{centering}
 \end{table}
 
+Note the connection between the table for $SL_{2}$ mod $5$ and the one for $SL_{2}$ mod $2$. Hidden within the odd rows of column $\underline{5}$, there is a copy of row $\underline{2}$ in $SL_{2}$ mod $2$. Both have the pattern 1, 1, 1, 2, 2, 2, 3, 3, 3, ... In the even rows of column $\underline{2}$ in $SL_{2}$ mod $5$, there is a copy of column $\underline{1}$ in $SL_{2}$ mod $2$. Both have the pattern 1, 0, 1, 2, 1, 2, 3, 2, 3, ...
+
+\begin{prop}
+Again we define formulas for row $h$ in terms of $h$ mod $n + 1$. Take $h$ mod $6$: \\
+\begin{table}[h]
+\centering
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+    $h$ mod $6$ & \# of $\underline{1}$ & \# of $\underline{2}$ & \# of $\underline{3}$ & \# of $\underline{4}$ & \# of $\underline{5} $\\ \hline
+    $0$  & $0$     & $h/6$  & $0$ &  $h/6$ & $0$  \\ \hline
+    $1$  & $\ceil*{h/6}$     & $0$  & $0$ &  $0$ & $\floor*{h/6}$  \\ \hline
+    $2$ & $0$     & $\ceil*{h/6}$  & $0$ & $\floor*{h/6}$ & $0$  \\ \hline
+    $3$ & $\floor*{h/6}$  & $0$  & $h/3$ &  $0$ & $\ceil*{h/6}$  \\ \hline
+    $4$ & $0$     & $\floor*{h/6}$  & $0$ & $\ceil*{h/6}$ & $0$  \\ \hline
+    $5$ & $\floor*{h/6}$  & $0$  & $0$ &  $0$ & $\ceil*{h/6}$  \\ \hline
+    \end{tabular}
+\end{table}
+
+\end{prop}
+
 \subsection{Irreducible behavior in $SL_{2}$ mod $n$}
-We have noticed that for the cases of $SL_{2}$ mod $n$ for $n = 2$ and $n = 3$, the sets $\underline{1}$, ..., $\underline{n}$ are irreducible. We posit that this is true for any $n$. 
+We have noticed that for the cases of $SL_{2}$ mod $n$ for $n = 2$, $3$, and $5$, the sets $\underline{1}$, ..., $\underline{n}$ are irreducible. We posit that this is true for any $n$. 
 \begin{prop}
  In $SL_{2}$ mod $n$, sets $\underline{1}$, ..., $\underline{n}$ are irreducible. 
 \end{prop}
@@ -389,6 +404,10 @@ Thus far in $SL_{2}$ mod $n$ for $n = 2$ and $n = 3$, the table we have drawn ha
 \begin{prop}
 $SL_{2}$ mod $n$, the table displaying the number of copies of each irreducible set will have a pattern that has a period of $n + 1$  rows. 
 \end{prop}
+
+Also, in $SL_{2}$ mod $n$, rows with even values of $h$ can only have nonzero entries in even columns. Rows with odd values of $h$ can only have nonzero entries in odd columns. 
+
+Using the information found in $SL_{2}$ mod $2$, $3$, and $5$, then we can conjecture the behavior in $SL_{2}$ mod $n$. 
 
 \section{Conclusion}
 When matrices in $SL_{2}$ mod $n$ can act on polynomials $R[x,y]_{k}$, patterns begin to emerge. When one examines polynomials of lower orders, distinctive mappings called orbits begin to appear. As the order increases, we find that polynomial sets contain copies of lower order sets.  In fact, $SL_{2}$ mod $n$, sets $\underline{1}$, ..., $\underline{n}$ are irreducible. We find that it is possible to find how many copies of the irreducibile sets each higher order set can be decomposed into and to discern what will happen as $k$ approaches infinity.
